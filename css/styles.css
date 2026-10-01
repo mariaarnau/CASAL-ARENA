@@ -266,7 +266,6 @@ button { font: inherit; color: inherit; }
 .al--soja { background: #3f9b46; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
 .two > div + div { border-left: 1px solid var(--line); padding-left: 14px; }
-.ill { display: block; margin: 8px auto 0; width: min(100%, 250px); mix-blend-mode: multiply; -webkit-mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 62%, transparent 100%); mask-image: radial-gradient(ellipse 62% 62% at 50% 50%, #000 62%, transparent 100%); }
 .sheet__foot { margin: 14px 0 0; text-align: center; font-style: italic; font-size: 1rem; }
 
 /* ---------- Galería ---------- */

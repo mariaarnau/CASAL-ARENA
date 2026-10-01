@@ -197,7 +197,6 @@
     if (sc.items) h += sc.items.map(rowHTML).join("");
     if (sc.grupos) h += sc.grupos.map(grpHTML).join("");
     if (sc.dos) h += '<div class="two">' + sc.dos.map(function (col) { return "<div>" + col.map(grpHTML).join("") + "</div>"; }).join("") + "</div>";
-    if (sc.ill) h += '<img class="ill" src="assets/img/carta/' + sc.ill + '.jpg" alt="" loading="lazy">';
     return h + "</section>";
   }
   function sheetsHTML() {

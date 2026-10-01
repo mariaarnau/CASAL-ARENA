@@ -39,7 +39,7 @@
             I("Hummus", ["8€"], ["sesamo"]),
             I("Anchoas con olivas", ["7€"], ["pescado", "so2"]),
             I("Boquerones con olivas", ["6,50€"], ["pescado", "so2"])
-          ], ill: "olivas" },
+          ] },
           { id: "cervezas", t: "Cervezas", cab: ["Caña", "Doble", "Pinta"], w: 4.3, items: [
             I("Estrella Galicia (de bodega)", ["2€", "3€", "4,50€"], ["gluten"]),
             I("1906 (de barril)", ["2,50€", "3,50€", "5,50€"], ["gluten"]),
@@ -116,7 +116,7 @@
               I("Focaccia de mortadela", ["8€"], ["gluten", "lacteos", "frutos"]),
               I("Focaccia de pulled pork con queso", ["9€"], ["gluten", "lacteos"])
             ] }
-          ], ill: "tarta" },
+          ] },
           { id: "bebidas", t: "Bebidas", items: [
             I("Agua", ["2€"]),
             I("Agua con gas", ["1,90€"]),
@@ -141,7 +141,7 @@
             I("Bombón", ["2,20€"], ["lacteos"]),
             I("Iced Coffee", ["2,90€"], ["lacteos"]),
             I("Cacaolat", ["2,50€"], ["lacteos"])
-          ], ill: "taza" },
+          ] },
           { id: "infusiones", t: "Infusiones", precioTitulo: "1,80€", items: [
             I("Menta poleo", []),
             I("Manzanilla", []),
