@@ -2,8 +2,6 @@
 window.CONTACTO = {
   nombre: "Casal Arena València",
   direccion: ["C. d'Antonio Ferrandis, 24", "Quatre Carreres", "46013 València"],
-  // PENDIENTE: pon aquí el teléfono real, p. ej. "+34 600 000 000". Si está vacío, no se muestra.
-  telefono: "",
   // Horario habitual (fuente: story de Instagram del local).
   horario: [
     ["Lunes", "Cerrado"],
@@ -17,6 +15,8 @@ window.CONTACTO = {
   horarioNota: "Los horarios pueden cambiar en función de los eventos del Roig Arena.",
   instagram: "https://www.instagram.com/casalarena_/",
   instagramUser: "@casalarena_",
+  tiktok: "https://www.tiktok.com/@casalarenavalencia?lang=es",
+  tiktokUser: "@casalarenavalencia",
   calendarioBasket: "https://www.valenciabasket.com/en/male-calendar",
   precioMedio: "10–20 € por persona",
   mapsQuery: "Casal Arena Valencia, C. d'Antonio Ferrandis, 24, 46013 València",

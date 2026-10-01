@@ -299,3 +299,5 @@ body.is-locked { overflow: hidden; }
   .hero__title span, .hero__eyebrow, .hero__tagline, .hero__actions { animation: none; }
   .hero__scroll span { animation: none; }
 }
+
+.footer__social { display: flex; gap: 8px 28px; justify-content: center; flex-wrap: wrap; }

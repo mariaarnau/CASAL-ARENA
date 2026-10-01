@@ -167,11 +167,6 @@
   $("#cPrice").textContent = K.precioMedio || "";
   $("#cDirections").href = "https://www.google.com/maps/search/?api=1&query=" + q;
   $("#mapFrame").src = "https://www.google.com/maps?q=" + q + "&output=embed";
-  if (K.telefono) {
-    var tel = K.telefono.replace(/[^\d+]/g, "");
-    $("#cPhoneRow").hidden = false; $("#cPhone").textContent = K.telefono; $("#cPhone").href = "tel:" + tel;
-    $("#cCall").hidden = false; $("#cCall").href = "tel:" + tel;
-  }
   if (K.horario && K.horario.length) {
     $("#cHoursRow").hidden = false;
     $("#cHours").innerHTML = K.horario.map(function (r) { return "<tr><td>" + esc(r[0]) + "</td><td>" + esc(r[1]) + "</td></tr>"; }).join("");
@@ -179,7 +174,11 @@
   }
   if (K.instagram) {
     $("#cInsta").hidden = false; $("#cInsta").href = K.instagram;
-    $("#footInsta").hidden = false; $("#footInsta").href = K.instagram; $("#footInsta").textContent = "Síguenos en Instagram " + (K.instagramUser || "");
+    $("#footInsta").hidden = false; $("#footInsta").href = K.instagram; $("#footInsta").textContent = "Instagram " + (K.instagramUser || "");
+  }
+  if (K.tiktok) {
+    $("#cTiktok").hidden = false; $("#cTiktok").href = K.tiktok;
+    $("#footTiktok").hidden = false; $("#footTiktok").href = K.tiktok; $("#footTiktok").textContent = "TikTok " + (K.tiktokUser || "");
   }
   if (K.calendarioBasket) $("#fullCalendar").href = K.calendarioBasket;
   $("#year").textContent = new Date().getFullYear();
