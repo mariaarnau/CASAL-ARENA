@@ -164,24 +164,60 @@
   }
 
   /* ---------- Carta ---------- */
-  function dishHTML(d) {
-    return '<div class="dish"><span class="dish__name">' + esc(d.nombre) + '</span><span class="dish__dots"></span><span class="dish__price">' + money(d.precio) + "</span>" +
-      (d.desc ? '<p class="dish__desc">' + esc(d.desc) + "</p>" : "") + "</div>";
-  }
-  var cols = $("#menuCols"), cn = $("#catnavIn");
-  if (cols) {
-    cols.innerHTML = C.categorias.map(function (c, i) {
-      return '<section class="menu-cat" id="cat-' + i + '"><h2 class="display">' + esc(c.nombre) + "</h2>" + c.items.map(dishHTML).join("") + "</section>";
+  var G = '<svg viewBox="0 0 24 24" fill="#fff" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  var GEN = "Alérgeno: consulta con el personal";
+  var AL = {
+    gluten: ["Cereales con gluten", '<path fill="none" d="M12 21V8M12 10c-2-1-3-2-3-4.5M12 10c2-1 3-2 3-4.5M12 14c-2-1-3-2-3-4.5M12 14c2-1 3-2 3-4.5M12 18c-2-1-3-2-3-4.5M12 18c2-1 3-2 3-4.5"/>'],
+    lacteos: ["Lácteos", '<path d="M9.5 4h5v3l2.5 2.5V20H7V9.5L9.5 7z"/>'],
+    pescado: ["Pescado", '<path d="M3 12c3-4.5 8-5.5 12-1.5l5-3v9l-5-3c-4 4-9 3-12-1.5z"/>'],
+    moluscos: ["Moluscos", '<path d="M12 20L4.5 10a8 8 0 0 1 15 0z"/>'],
+    huevo: [GEN, '<path d="M12 4c3.2 0 5.5 5 5.5 9a5.5 5.5 0 0 1-11 0c0-4 2.3-9 5.5-9z"/>'],
+    sesamo: [GEN, '<circle cx="8" cy="9" r="1.7"/><circle cx="15" cy="8" r="1.7"/><circle cx="12" cy="15" r="1.7"/><circle cx="17" cy="15" r="1.4"/>'],
+    soja: [GEN, '<circle cx="12" cy="8" r="3"/><circle cx="8" cy="14.5" r="3"/><circle cx="16" cy="14.5" r="3"/>'],
+    frutos: [GEN, '<path d="M12 3.5c3 3.5 5.5 6 5.5 9.5a5.5 5.5 0 0 1-11 0c0-3.5 2.5-6 5.5-9.5z"/>']
+  };
+  function alIcons(a) {
+    return (a || []).map(function (k) {
+      if (k === "so2") return '<i class="al al--so2" title="Sulfitos" aria-label="Sulfitos">SO<sub>2</sub></i>';
+      var d = AL[k]; if (!d) return "";
+      return '<i class="al al--' + k + '" title="' + esc(d[0]) + '" aria-label="' + esc(d[0]) + '">' + G + d[1] + "</svg></i>";
     }).join("");
-    var links = C.categorias.map(function (c, i) { return '<a href="#cat-' + i + '">' + esc(c.nombre) + "</a>"; }).join("");
-    cn.insertAdjacentHTML("afterbegin", links);
-    if (C.demo) $("#demoFlag").hidden = false;
+  }
+  function rowHTML(it) {
+    return '<div class="row"><span class="row__n">' + esc(it.n) + (it.a && it.a.length ? '<span class="als">' + alIcons(it.a) + "</span>" : "") + "</span>" +
+      (it.p || []).map(function (x) { return '<span class="pr">' + esc(x) + "</span>"; }).join("") + "</div>";
+  }
+  function grpHTML(g) {
+    return '<div class="grp' + (g.sep ? " grp--sep" : "") + '">' + (g.g ? "<h3>" + esc(g.g) + "</h3>" : "") + g.items.map(rowHTML).join("") + "</div>";
+  }
+  function secHTML(sc) {
+    var h = '<section class="sec-c" id="' + sc.id + '"' + (sc.w ? ' style="--pw:' + sc.w + 'rem"' : "") + '><div class="sec-c__h"><h2>' + esc(sc.t) + "</h2>" +
+      (sc.nota ? '<span class="sec-c__n">' + esc(sc.nota) + "</span>" : "") + (sc.precioTitulo ? '<span class="sec-c__pt">' + esc(sc.precioTitulo) + "</span>" : "") + "</div>";
+    if (sc.cab) h += '<div class="colhead">' + sc.cab.map(function (c) { return "<span>" + esc(c) + "</span>"; }).join("") + "</div>";
+    if (sc.items) h += sc.items.map(rowHTML).join("");
+    if (sc.grupos) h += sc.grupos.map(grpHTML).join("");
+    if (sc.dos) h += '<div class="two">' + sc.dos.map(function (col) { return "<div>" + col.map(grpHTML).join("") + "</div>"; }).join("") + "</div>";
+    if (sc.ill) h += '<img class="ill" src="assets/img/carta/' + sc.ill + '.jpg" alt="" loading="lazy">';
+    return h + "</section>";
+  }
+  function sheetsHTML() {
+    return (C.hojas || []).map(function (hoja) {
+      return '<article class="sheet"><header class="sheet__head"><img src="assets/img/logo-casal-arena-terracota.png" alt="Casal Arena València"></header><div class="sheet__cols">' +
+        hoja.columnas.map(function (col) { return '<div class="sheet__col">' + col.map(secHTML).join("") + "</div>"; }).join("") +
+        "</div>" + (C.nota ? '<p class="sheet__foot">' + esc(C.nota) + "</p>" : "") + "</article>";
+    }).join("");
+  }
+  var sheetsBox = $("#sheets"), cn = $("#catnavIn");
+  if (sheetsBox) {
+    sheetsBox.innerHTML = sheetsHTML();
+    var secs = [];
+    (C.hojas || []).forEach(function (h) { h.columnas.forEach(function (col) { col.forEach(function (sc) { secs.push(sc); }); }); });
+    cn.insertAdjacentHTML("afterbegin", secs.map(function (sc) { return '<a href="#' + sc.id + '">' + esc(sc.t) + "</a>"; }).join(""));
     $$("[data-carta-nota]").forEach(function (el) { el.textContent = C.nota || ""; });
   }
 
   var viewer = $("#viewer"), vBody = $("#viewerBody"), lastFocus;
   function buildViewer() {
-    vBody.innerHTML = "";
     var pdf = $("#viewerPdf");
     if (C.pdf) {
       pdf.href = C.pdf; pdf.hidden = false;
@@ -189,11 +225,7 @@
       return;
     }
     pdf.hidden = true;
-    var h = '<article class="page">' + (C.demo ? '<span class="page__demo">Ejemplo</span>' : "") +
-      '<img src="assets/img/logo-casal-arena-oscuro.png" alt="Casal Arena València">';
-    C.categorias.forEach(function (c) { h += "<h3>" + esc(c.nombre) + "</h3>" + c.items.map(dishHTML).join(""); });
-    h += (C.nota ? '<p class="page__nota">' + esc(C.nota) + "</p>" : "") + "</article>";
-    vBody.innerHTML = h;
+    vBody.innerHTML = '<div class="sheets">' + sheetsHTML() + "</div>";
   }
   function openViewer() { lastFocus = document.activeElement; buildViewer(); viewer.hidden = false; document.body.classList.add("is-locked"); $("#viewerClose").focus(); }
   function closeViewer() { viewer.hidden = true; document.body.classList.remove("is-locked"); if (lastFocus) lastFocus.focus(); }

@@ -5,13 +5,13 @@ Web estática de 6 páginas (HTML + CSS + JS, sin dependencias ni servidor). Abr
 Páginas: `index.html`, `quienes-somos.html`, `carta.html`, `el-local.html`, `valencia-basket.html`, `contacto.html`.
 
 ## Qué editar
-- `data/carta.js` – carta (ahora son **datos de ejemplo**; poner `demo: false` al cargar la real, o `pdf: "assets/carta/carta.pdf"`).
+- `data/carta.js` – carta real (transcrita de la carta de Google Maps, sept 2026) con precios y alérgenos. Los iconos "huevo", "sesamo", "soja" y "frutos" no tienen nombre confirmado: revisar con la leyenda oficial.
 - `data/partidos.js` – partidos del Valencia Basket (calendario oficial descargado el 2026-10-01). Los pasados se ocultan solos.
 - `data/contacto.js` – dirección, horario y redes sociales. El estado «abierto ahora» se calcula con este horario.
 - Cabecera, pie y textos de las páginas: `scripts/build.py`; después ejecutar `python3 scripts/build.py` para regenerar los HTML.
 - `scripts/descargar-datos.sh` – descarga el calendario oficial para actualizarlo.
 
 ## Archivos
-- `assets/` – imágenes, vídeo y fuentes (Barlow Condensed, Instrument Serif y Manrope, alojadas en el propio sitio).
+- `assets/` – imágenes, vídeo y fuentes (Barlow Condensed, Instrument Serif, Manrope y EB Garamond para la carta, alojadas en el propio sitio).
 - `originales/` – material original sin tocar.
 - Logo: `logo-casal-arena.png` (dorado, fondos oscuros) y `logo-casal-arena-oscuro.png` (fondos claros). Transparentes.

@@ -256,13 +256,12 @@ carta = phero("assets/img/mesa-tapas.jpg", "Tasca · Cafetería", "La carta", "5
   <div class="wrap"><div class="taste">{taste}</div></div>
 </section>
 
-<div class="catnav"><div class="wrap catnav__in" id="catnavIn"><button class="btn btn--solid" type="button" data-open-carta>Ver en formato PDF</button></div></div>
+<div class="catnav"><div class="wrap catnav__in" id="catnavIn"><button class="btn btn--solid" type="button" data-open-carta>Ver la carta a pantalla completa</button></div></div>
 
 <section class="sec">
   <div class="wrap">
-    <p class="flag" id="demoFlag" hidden>Carta de ejemplo: los platos y precios reales se añadirán antes de publicar la web.</p>
-    <div class="menu-cols" id="menuCols"></div>
-    <p class="muted" data-carta-nota style="margin-top:20px"></p>
+    <div class="sheets" id="sheets"></div>
+    <p class="muted" data-carta-nota style="margin-top:24px;text-align:center"></p>
   </div>
 </section>
 """
@@ -347,6 +346,7 @@ basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", 
 <section class="sec">
   <div class="wrap">
     <div class="sec-head reveal">
+      <img class="vb-logo" src="assets/img/valencia-basket-logo.png" alt="Valencia Basket" width="112" height="150">
       <p class="lead" style="max-width:24ch">Pantalla grande y ambiente de <em>pabellón</em>.</p>
       <p class="muted" style="max-width:46ch;margin:0">Estamos a un paso del Roig Arena. Ven a ver al Valencia Basket con nosotros, antes, durante o después del partido, y disfruta del ambiente de la ciudad.</p>
     </div>
