@@ -132,7 +132,7 @@
     $("#nextRival").textContent = n.rival;
     $("#nextMeta").textContent = fmt(n.d, { weekday: "long", day: "numeric", month: "long" }) + " · " +
       fmt(n.d, { hour: "2-digit", minute: "2-digit" }) + " h · " + n.comp + (n.local ? " · Roig Arena" : " · A domicilio");
-    list.slice(1).forEach(function (m) {
+    list.slice(1, 10).forEach(function (m) {
       var card = el("div", "fx",
         '<div class="fx__date"><b>' + fmt(m.d, { day: "numeric" }) + "</b><small>" + esc(fmt(m.d, { month: "short" }).replace(".", "")) + "</small></div>" +
         '<div class="fx__vs">' + (m.local ? "Valencia Basket – " + esc(m.rival) : esc(m.rival) + " – Valencia Basket") +
