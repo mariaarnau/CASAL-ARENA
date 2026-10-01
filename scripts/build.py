@@ -8,7 +8,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 ARROW = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
-COURT = '<img class="{cls}" src="assets/img/cancha.svg" alt="" aria-hidden="true">'
+COURT = ''  # diseño minimalista: sin líneas de pista decorativas
 
 NAV = [
     ("quienes-somos.html", "Quiénes somos"),
@@ -32,8 +32,8 @@ def head(title, desc, image="assets/img/fachada-noche.jpg"):
 <meta property="og:description" content="{desc}">
 <meta property="og:image" content="{image}">
 <link rel="icon" type="image/png" href="assets/img/logo-monograma.png">
-<link rel="preload" href="assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -147,8 +147,6 @@ home = f"""<section class="hero">
     </div>
   </div>
 </section>
-
-<div class="ticker" aria-hidden="true"><div class="ticker__track">{ticker}{ticker}</div></div>
 
 <section class="sec">
   <div class="wrap">

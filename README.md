@@ -12,6 +12,6 @@ Páginas: `index.html`, `quienes-somos.html`, `carta.html`, `el-local.html`, `va
 - `scripts/descargar-datos.sh` – descarga el calendario oficial para actualizarlo.
 
 ## Archivos
-- `assets/` – imágenes, vídeo y fuentes (Barlow Condensed, Instrument Serif, Manrope y EB Garamond para la carta, alojadas en el propio sitio).
+- `assets/` – imágenes, vídeo y fuentes (Instrument Serif, Manrope y EB Garamond para la carta, alojadas en el propio sitio).
 - `originales/` – material original sin tocar.
 - Logo: `logo-casal-arena.png` (dorado, fondos oscuros) y `logo-casal-arena-oscuro.png` (fondos claros). Transparentes.
