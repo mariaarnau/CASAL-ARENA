@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valencia Basket · Casal Arena València</title>
+<meta name="description" content="Ve los partidos del Valencia Basket en pantalla grande en Casal Arena, a un paso del Roig Arena. Próximos partidos de Euroliga y Liga Endesa.">
+<meta name="theme-color" content="#08170f">
+<meta property="og:title" content="Valencia Basket · Casal Arena València">
+<meta property="og:description" content="Ve los partidos del Valencia Basket en pantalla grande en Casal Arena, a un paso del Roig Arena. Próximos partidos de Euroliga y Liga Endesa.">
+<meta property="og:image" content="assets/img/tele-partido.jpg">
+<link rel="icon" type="image/png" href="assets/img/logo-monograma.png">
+<link rel="preload" href="assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="site-head__in">
+    <a class="brand" href="index.html" aria-label="Casal Arena València, inicio">
+      <img src="assets/img/logo-monograma.png" alt="" width="54" height="55">
+      <span><b>Casal Arena</b><i>València</i></span>
+    </a>
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="quienes-somos.html">Quiénes somos</a>
+      <a href="carta.html">La carta</a>
+      <a href="el-local.html">El local</a>
+      <a href="valencia-basket.html" aria-current="page">Valencia Basket</a>
+      <a href="contacto.html">Contacto</a>
+      <a class="btn btn--solid" data-directions href="#">Cómo llegar</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+  </div>
+</header>
+<main>
+<section class="phero">
+  <img src="assets/img/tele-partido.jpg" alt="" style="object-position:50% 35%">
+  <img class="phero__court" src="assets/img/cancha.svg" alt="" aria-hidden="true">
+  <div class="wrap">
+    <p class="eyebrow">Valencia Basket en Casal Arena</p>
+    <h1 class="display">Vive el partido</h1>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="lead" style="max-width:24ch">Pantalla grande y ambiente de <em>pabellón</em>.</p>
+      <p class="muted" style="max-width:46ch;margin:0">Estamos a un paso del Roig Arena. Ven a ver al Valencia Basket con nosotros, antes, durante o después del partido, y disfruta del ambiente de la ciudad.</p>
+    </div>
+
+    <div class="board reveal" id="board">
+      <img class="board__court" src="assets/img/cancha.svg" alt="" aria-hidden="true">
+      <div>
+        <p class="board__lab">Próximo partido</p>
+        <div class="display board__vs"><span id="boardHome"></span><i>vs</i><span id="boardAway"></span></div>
+        <p class="board__meta" id="boardMeta"></p>
+      </div>
+      <div class="count" id="boardCount" aria-live="off"></div>
+    </div>
+
+    <div class="chips" role="group" aria-label="Filtrar partidos">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">Todos</button>
+      <button class="chip" type="button" data-filter="home" aria-pressed="false">En el Roig Arena</button>
+      <button class="chip" type="button" data-filter="Euroliga" aria-pressed="false">Euroliga</button>
+      <button class="chip" type="button" data-filter="Liga Endesa" aria-pressed="false">Liga Endesa</button>
+    </div>
+    <div id="fixtures"></div>
+    <p style="margin-top:28px"><button class="btn" type="button" id="moreFx" style="color:var(--pine-900)" hidden>Ver más partidos</button></p>
+    <p class="muted" style="margin-top:36px;font-size:.92rem">Calendario del equipo masculino según la web oficial del club. Fechas y horarios sujetos a cambios.</p>
+    <p style="margin-top:20px"><a class="btn" style="color:var(--pine-900)" data-calendar href="#">Ver calendario completo <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+  </div>
+</section>
+
+<section class="sec dark">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:center">
+    <div class="reveal"><p class="eyebrow" style="margin:0 0 6px" data-open-status></p><h2 class="display h-lg">Ven a verlo con nosotros</h2></div>
+    <div class="reveal" style="display:flex;flex-wrap:wrap;gap:14px">
+      <a class="btn btn--solid" data-directions href="#">Cómo llegar</a>
+      <a class="btn" data-insta href="#">Escríbenos en Instagram</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot">
+      <a href="index.html" aria-label="Casal Arena València, inicio"><img src="assets/img/logo-casal-arena.png" alt="Casal Arena València" width="135" height="190" loading="lazy"></a>
+      <div>
+        <h4>Visítanos</h4>
+        <p data-addr></p>
+        <p style="margin-top:12px" data-open-status></p>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <ul>
+        <li><a href="quienes-somos.html">Quiénes somos</a></li>
+        <li><a href="carta.html">La carta</a></li>
+        <li><a href="el-local.html">El local</a></li>
+        <li><a href="valencia-basket.html">Valencia Basket</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Síguenos</h4>
+        <ul>
+          <li><a data-insta href="#">Instagram <span data-insta-user></span></a></li>
+          <li><a data-tiktok href="#">TikTok <span data-tiktok-user></span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__end"><span>© <span data-year></span> Casal Arena València</span><span>Tasca · Cafetería junto al Roig Arena</span></div>
+  </div>
+</footer>
+<script src="data/carta.js"></script>
+<script src="data/partidos.js"></script>
+<script src="data/contacto.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
