@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casal Arena València · Taberna junto al Roig Arena</title>
+  <meta name="description" content="Casal Arena: taberna familiar temática de baloncesto junto al Roig Arena, en València. Tapeo, carta y los partidos del Valencia Basket en pantalla grande.">
+  <meta name="theme-color" content="#0f2419">
+  <link rel="icon" type="image/png" href="assets/img/logo-monograma.png">
+  <meta property="og:title" content="Casal Arena València">
+  <meta property="og:description" content="Taberna familiar junto al Roig Arena. Tapeo, baloncesto y el mejor ambiente de València.">
+  <meta property="og:image" content="assets/img/fachada-noche.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#inicio" aria-label="Casal Arena, inicio">
+    <img src="assets/img/logo-monograma.png" alt="Casal Arena" width="44" height="45">
+  </a>
+  <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  <nav class="nav__links" id="navLinks">
+    <a href="#quienes-somos">Quiénes somos</a>
+    <a href="#carta">Nuestra carta</a>
+    <a href="#local">El local</a>
+    <a href="#baloncesto">Valencia Basket</a>
+    <a href="#contacto" class="nav__cta">Contacto</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg">
+    <source src="assets/video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="hero__shade"></div>
+  <div class="hero__content">
+    <p class="eyebrow hero__eyebrow">Taberna · València</p>
+    <h1 class="hero__title" aria-label="Casal Arena">
+      <span>Casal</span><span>Arena</span>
+    </h1>
+    <p class="hero__tagline">Tapeo, baloncesto y familia, a un paso del Roig Arena</p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#carta">Ver la carta</a>
+      <a class="btn btn--ghost" href="#baloncesto">Próximos partidos</a>
+    </div>
+  </div>
+  <a class="hero__scroll" href="#quienes-somos" aria-label="Bajar"><span></span></a>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="section section--cream" id="quienes-somos">
+  <div class="wrap about">
+    <div class="about__text reveal">
+      <p class="eyebrow eyebrow--dark">Quiénes somos</p>
+      <h2 class="title">Una familia, un sueño<br><em>y una pasión compartida</em></h2>
+      <p>Somos una familia que siempre ha soñado con tener un local propio, un lugar donde recibir a la gente como se recibe en casa. Después de mucho esfuerzo e ilusión, ese sueño por fin es una realidad, y hoy nos hace muy felices abrirte sus puertas.</p>
+      <p>Hemos querido que Casal Arena nazca a un paso del Roig Arena, en el corazón de un barrio que respira baloncesto. Por eso hemos tematizado cada rincón con el deporte que más nos apasiona: el mural de naranjas convertidas en balones, los colores de la ciudad y el ambiente de los días de partido son nuestra manera de rendir homenaje a València.</p>
+      <p>Aquí encontrarás cocina de taberna para compartir, un trato cercano y una sala pensada para disfrutar con amigos, en familia o antes y después de ver jugar al equipo de la ciudad. Gracias por acompañarnos en este comienzo.</p>
+      <p class="about__sign">— La familia de Casal Arena</p>
+    </div>
+    <div class="about__photos reveal">
+      <img class="about__img about__img--a" src="assets/img/local-mural-cojines.jpg" alt="Mural de naranjas con forma de balón de baloncesto en Casal Arena" loading="lazy" width="1536" height="2048">
+      <img class="about__img about__img--b" src="assets/img/mesa-tapas.jpg" alt="Mesa con tapas y cervezas en Casal Arena" loading="lazy" width="1536" height="2048">
+    </div>
+  </div>
+</section>
+
+<!-- CARTA -->
+<section class="section section--green" id="carta">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Nuestra carta</p>
+      <h2 class="title title--light">Cocina de taberna, <em>pensada para compartir</em></h2>
+    </div>
+    <div class="demo-flag" id="demoFlag" hidden>Carta de ejemplo: los platos y precios reales se añadirán antes de publicar.</div>
+    <div class="carta reveal">
+      <div class="carta__tabs" id="cartaTabs" role="tablist" aria-label="Categorías de la carta"></div>
+      <div class="carta__panel" id="cartaPanel" role="tabpanel" aria-live="polite"></div>
+    </div>
+    <div class="carta__actions reveal">
+      <button class="btn btn--primary" id="openCarta" type="button">Ver la carta completa</button>
+      <p class="carta__nota" id="cartaNota"></p>
+    </div>
+  </div>
+</section>
+
+<!-- EL LOCAL -->
+<section class="section section--cream" id="local">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow eyebrow--dark">El local</p>
+      <h2 class="title">Un rincón con <em>sabor a València</em></h2>
+    </div>
+    <div class="gallery reveal" id="gallery">
+      <button class="gallery__item gallery__item--wide" data-src="assets/img/local-mural-panoramica.jpg" data-alt="Mural de naranjas y balones sobre la zona de banquetas"><img src="assets/img/local-mural-panoramica.jpg" alt="Mural de naranjas y balones sobre la zona de banquetas" loading="lazy"></button>
+      <button class="gallery__item gallery__item--tall" data-src="assets/img/local-pared-letras.jpg" data-alt="Pared con el nombre Casal Arena y mural"><img src="assets/img/local-pared-letras.jpg" alt="Pared con el nombre Casal Arena y mural" loading="lazy"></button>
+      <button class="gallery__item gallery__item--tall" data-src="assets/img/carta-en-sala.jpg" data-alt="Nuestra carta ilustrada sobre la mesa"><img src="assets/img/carta-en-sala.jpg" alt="Nuestra carta ilustrada sobre la mesa" loading="lazy"></button>
+      <div class="gallery__item gallery__item--clip"><video src="assets/video/clip-7974.mp4" poster="assets/img/clip-7974.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vídeo del local"></video></div>
+      <button class="gallery__item gallery__item--tall" data-src="assets/img/plato-guiso.jpg" data-alt="Guiso con pan y aceitunas"><img src="assets/img/plato-guiso.jpg" alt="Guiso con pan y aceitunas" loading="lazy"></button>
+      <button class="gallery__item gallery__item--wide" data-src="assets/img/fachada-noche.jpg" data-alt="Fachada de Casal Arena de noche"><img src="assets/img/fachada-noche.jpg" alt="Fachada de Casal Arena de noche" loading="lazy"></button>
+      <button class="gallery__item gallery__item--wide" data-src="assets/img/local-sala.jpg" data-alt="Sala principal de Casal Arena"><img src="assets/img/local-sala.jpg" alt="Sala principal de Casal Arena" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<!-- VALENCIA BASKET -->
+<section class="section section--arena" id="baloncesto">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow">Valencia Basket en Casal Arena</p>
+      <h2 class="title title--light">Vive cada partido <em>con ambiente de pabellón</em></h2>
+      <p class="lead">Tenemos pantalla grande y estamos a un paso del Roig Arena. Ven a ver al Valencia Basket con nosotros, antes, durante o después del partido, y disfruta del ambiente de la ciudad.</p>
+    </div>
+
+    <div class="next reveal" id="nextMatch" hidden>
+      <div class="next__label">Próximo partido</div>
+      <div class="next__teams"><strong>Valencia Basket</strong><span>vs</span><strong id="nextRival"></strong></div>
+      <div class="next__meta" id="nextMeta"></div>
+      <div class="next__count" id="nextCount" aria-live="off"></div>
+    </div>
+
+    <div class="fixtures reveal" id="fixtures"></div>
+    <p class="fixtures__note" id="fixturesNote"></p>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section section--cream" id="contacto">
+  <div class="wrap contact">
+    <div class="contact__info reveal">
+      <p class="eyebrow eyebrow--dark">Contacto</p>
+      <h2 class="title">Te esperamos <em>en casa</em></h2>
+      <ul class="contact__list">
+        <li><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <div><strong>Dirección</strong><span id="cAddr"></span></div></li>
+        <li id="cPhoneRow" hidden><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <div><strong>Teléfono</strong><a id="cPhone" href="#"></a></div></li>
+        <li id="cHoursRow" hidden><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><strong>Horario</strong><span id="cHours"></span></div></li>
+        <li><span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+          <div><strong>Precio medio</strong><span id="cPrice"></span></div></li>
+      </ul>
+      <div class="contact__actions">
+        <a class="btn btn--primary" id="cDirections" target="_blank" rel="noopener" href="#">Cómo llegar</a>
+        <a class="btn btn--outline" id="cCall" href="#" hidden>Llamar</a>
+      </div>
+    </div>
+    <div class="contact__map reveal">
+      <iframe id="mapFrame" title="Mapa de Casal Arena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <img src="assets/img/logo-casal-arena.png" alt="Casal Arena València" width="120" height="169" loading="lazy">
+  <p id="footAddr"></p>
+  <p class="footer__copy">© <span id="year"></span> Casal Arena · Todos los derechos reservados</p>
+</footer>
+
+<!-- Visor de carta (estilo PDF) -->
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Carta de Casal Arena" hidden>
+  <div class="viewer__bar">
+    <span>Carta · Casal Arena</span>
+    <div>
+      <a class="viewer__btn" id="viewerPdf" href="#" download hidden>Descargar PDF</a>
+      <button class="viewer__btn" id="viewerPrint" type="button">Imprimir</button>
+      <button class="viewer__close" id="viewerClose" type="button" aria-label="Cerrar">×</button>
+    </div>
+  </div>
+  <div class="viewer__scroll" id="viewerBody"></div>
+</div>
+
+<!-- Lightbox de fotos -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button class="viewer__close" id="lbClose" type="button" aria-label="Cerrar">×</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script src="data/carta.js"></script>
+<script src="data/partidos.js"></script>
+<script src="data/contacto.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
