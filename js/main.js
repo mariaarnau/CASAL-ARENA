@@ -100,6 +100,9 @@
     return P.partidos.map(function (m) { return Object.assign({}, m, { d: new Date(m.fecha) }); })
       .filter(function (m) { return m.d.getTime() > cut; }).sort(function (a, b) { return a.d - b.d; });
   }
+  function slug(n) { return n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+  function crest(n) { return '<img class="crest" src="assets/img/clubes/' + slug(n) + '.png" alt="" width="40" height="40" loading="lazy" onerror="this.style.visibility=\'hidden\'">'; }
+  function team(n) { return '<span class="fx__team">' + crest(n) + "<span>" + esc(n) + "</span></span>"; }
   function teams(m) { return m.local ? ["Valencia Basket", m.rival] : [m.rival, "Valencia Basket"]; }
   function whenText(m) {
     return fmt(m.d, { weekday: "long", day: "numeric", month: "long" }) + " · " + fmt(m.d, { hour: "2-digit", minute: "2-digit" }) + " h";
@@ -147,8 +150,9 @@
         if (mk !== cur) { cur = mk; html += '<h3 class="month">' + esc(mk.charAt(0).toUpperCase() + mk.slice(1)) + "</h3>"; }
         var t = teams(m);
         html += '<article class="fx"><div class="fx__d"><b>' + fmt(m.d, { day: "2-digit" }) + "</b><span>" + esc(fmt(m.d, { weekday: "short" }).replace(".", "")) + "</span></div>" +
-          '<div><div class="fx__t">' + esc(t[0]) + " <i>vs</i> " + esc(t[1]) + '</div><div class="fx__c"><span class="tag">' + esc(m.comp) + "</span>" +
-          (m.local ? '<span class="tag tag--home">Roig Arena</span>' : "<span>A domicilio</span>") + "</div></div>" +
+          '<div class="fx__t">' + team(t[0]) + "<i>vs</i>" + team(t[1]) + "</div>" +
+          '<div class="fx__c"><span class="tag">' + esc(m.comp) + "</span>" +
+          (m.local ? '<span class="tag tag--home">Roig Arena</span>' : '<span class="tag tag--away">A domicilio</span>') + "</div>" +
           '<div class="fx__h">' + fmt(m.d, { hour: "2-digit", minute: "2-digit" }) + "</div></article>";
       });
       fxBox.innerHTML = html;
