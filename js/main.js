@@ -172,6 +172,15 @@
     $("#cPhoneRow").hidden = false; $("#cPhone").textContent = K.telefono; $("#cPhone").href = "tel:" + tel;
     $("#cCall").hidden = false; $("#cCall").href = "tel:" + tel;
   }
-  if (K.horario && K.horario.length) { $("#cHoursRow").hidden = false; $("#cHours").innerHTML = K.horario.map(esc).join("<br>"); }
+  if (K.horario && K.horario.length) {
+    $("#cHoursRow").hidden = false;
+    $("#cHours").innerHTML = K.horario.map(function (r) { return "<tr><td>" + esc(r[0]) + "</td><td>" + esc(r[1]) + "</td></tr>"; }).join("");
+    $("#cHoursNote").textContent = K.horarioNota || "";
+  }
+  if (K.instagram) {
+    $("#cInsta").hidden = false; $("#cInsta").href = K.instagram;
+    $("#footInsta").hidden = false; $("#footInsta").href = K.instagram; $("#footInsta").textContent = "Síguenos en Instagram " + (K.instagramUser || "");
+  }
+  if (K.calendarioBasket) $("#fullCalendar").href = K.calendarioBasket;
   $("#year").textContent = new Date().getFullYear();
 })();
