@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#08170f">
 <meta property="og:title" content="La carta · Casal Arena València">
 <meta property="og:description" content="Carta de Casal Arena: tapeo, buen jamón, buen café y cerveza de bodega, con precios, junto al Roig Arena en València.">
-<meta property="og:image" content="assets/img/mesa-tapas.jpg">
+<meta property="og:image" content="assets/img/comida/embutido-iberico.jpg">
 <link rel="icon" type="image/png" href="assets/img/logo-monograma.png">
 <link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -35,7 +35,7 @@
 </header>
 <main>
 <section class="phero">
-  <img src="assets/img/mesa-tapas.jpg" alt="" style="object-position:50% 38%">
+  <img src="assets/img/comida/embutido-iberico.jpg" alt="" style="object-position:50% 55%">
   
   <div class="wrap">
     <p class="eyebrow">Tasca · Cafetería</p>
@@ -47,6 +47,24 @@
   <div class="wrap"><div class="taste"><div>Buen café</div><div>Buen jamón</div><div>Tapeo</div><div>Buena cerveza de bodega</div></div></div>
 </section>
 
+
+<section class="sec darker">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="eyebrow">De la barra a la mesa</p><h2 class="display h-lg">Hecho para <em class="serif-i">compartir</em></h2></div>
+      <p class="muted" style="max-width:34ch;margin:0">Pulsa en cualquier foto para verla en grande.</p>
+    </div>
+    <div class="platos" data-lightbox>
+    <figure class="plato plato--a reveal"><button type="button" data-src="assets/img/comida/embutido-iberico.jpg" data-alt="Plato de embutidos ibéricos con picos y frutos secos"><img src="assets/img/comida/embutido-iberico.jpg" alt="Plato de embutidos ibéricos con picos y frutos secos" loading="lazy"></button><figcaption><b>Embutidos y jamón ibérico</b><span>Para compartir en mesa</span></figcaption></figure>
+    <figure class="plato plato--b reveal"><button type="button" data-src="assets/img/comida/focaccia-pulled-pork.jpg" data-alt="Focaccia de pulled pork con queso"><img src="assets/img/comida/focaccia-pulled-pork.jpg" alt="Focaccia de pulled pork con queso" loading="lazy"></button><figcaption><b>Focaccia de pulled pork</b><span>Con queso fundido</span></figcaption></figure>
+    <figure class="plato plato--c reveal"><button type="button" data-src="assets/img/comida/tabla-quesos.jpg" data-alt="Tabla de quesos con uvas, nueces y mermelada"><img src="assets/img/comida/tabla-quesos.jpg" alt="Tabla de quesos con uvas, nueces y mermelada" loading="lazy"></button><figcaption><b>Tabla de quesos</b><span>Uvas, nueces y mermelada</span></figcaption></figure>
+    <figure class="plato plato--d reveal"><button type="button" data-src="assets/img/comida/bocadillos-mostrador.jpg" data-alt="Bocadillos en el mostrador"><img src="assets/img/comida/bocadillos-mostrador.jpg" alt="Bocadillos en el mostrador" loading="lazy"></button><figcaption><b>Bocadillos del mostrador</b><span>Pan crujiente</span></figcaption></figure>
+    <figure class="plato plato--e reveal"><button type="button" data-src="assets/img/comida/ensaladilla-rusa.jpg" data-alt="Ensaladilla rusa con picos"><img src="assets/img/comida/ensaladilla-rusa.jpg" alt="Ensaladilla rusa con picos" loading="lazy"></button><figcaption><b>Ensaladilla rusa</b><span>Con picos y pimentón</span></figcaption></figure>
+    <figure class="plato plato--f reveal"><button type="button" data-src="assets/img/comida/cerveza-bodega.jpg" data-alt="Cañas de cerveza de bodega y tinto de verano en la barra"><img src="assets/img/comida/cerveza-bodega.jpg" alt="Cañas de cerveza de bodega y tinto de verano en la barra" loading="lazy"></button><figcaption><b>Cerveza de bodega</b><span>Y tinto de verano</span></figcaption></figure>
+    <figure class="plato plato--g reveal"><button type="button" data-src="assets/img/comida/focaccia-mortadela.jpg" data-alt="Focaccia de mortadela sobre la mesa"><img src="assets/img/comida/focaccia-mortadela.jpg" alt="Focaccia de mortadela sobre la mesa" loading="lazy"></button><figcaption><b>Focaccia de mortadela</b><span>Para acompañar las cañas</span></figcaption></figure>
+    </div>
+  </div>
+</section>
 
 <section class="sec">
   <div class="wrap">
@@ -103,6 +121,10 @@
     </div>
   </div>
   <div class="viewer__scroll" id="viewerBody"></div>
+</div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button class="vbtn" id="lbClose" type="button" aria-label="Cerrar">×</button>
+  <img id="lbImg" alt="">
 </div>
 <script src="data/carta.js"></script>
 <script src="data/partidos.js"></script>

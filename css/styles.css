@@ -296,6 +296,35 @@ button { font: inherit; color: inherit; }
 .foot p { margin: 0; color: rgba(241, 232, 214, .8); font-size: .92rem; }
 .foot__end { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-block: 20px; border-top: 1px solid var(--line-lt); font-size: .78rem; color: rgba(241, 232, 214, .55); }
 
+/* ---------- Mosaico de platos (carta) ---------- */
+.platos { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: clamp(120px, 14vw, 190px); gap: clamp(10px, 1.4vw, 18px); }
+.plato { position: relative; margin: 0; overflow: hidden; background: var(--pine-900); }
+.plato button { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.plato img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+.plato:hover img { transform: scale(1.04); }
+.plato::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(8, 23, 15, .78) 0%, rgba(8, 23, 15, 0) 46%); }
+.plato figcaption { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; padding: clamp(14px, 2vw, 24px); display: flex; flex-direction: column; gap: 2px; pointer-events: none; }
+.plato figcaption b { font-family: var(--f-serif); font-weight: 400; font-size: clamp(1.25rem, 2vw, 1.75rem); line-height: 1.1; color: var(--bone); }
+.plato figcaption span { font-size: .66rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-lt); }
+.plato--a { grid-column: 1 / 8;  grid-row: 1 / 4; }
+.plato--b { grid-column: 8 / 13; grid-row: 1 / 4; }
+.plato--c { grid-column: 1 / 5;  grid-row: 4 / 7; }
+.plato--d { grid-column: 5 / 9;  grid-row: 4 / 7; }
+.plato--e { grid-column: 9 / 13; grid-row: 4 / 7; }
+.plato--f { grid-column: 1 / 6;  grid-row: 7 / 10; }
+.plato--g { grid-column: 6 / 13; grid-row: 7 / 10; }
+.plato--a img { object-position: 50% 55%; }
+.plato--f img { object-position: 50% 60%; }
+.plato--g img { object-position: 50% 62%; }
+@media (max-width: 760px) {
+  .platos { grid-template-columns: 1fr 1fr; grid-auto-rows: 58vw; }
+  .plato--a, .plato--b, .plato--c, .plato--d, .plato--e, .plato--f, .plato--g { grid-column: auto; grid-row: auto; }
+  .plato--a, .plato--f, .plato--g { grid-column: 1 / 3; }
+  .plato--b, .plato--c, .plato--d, .plato--e { grid-row: auto / span 1; }
+  .plato--b, .plato--c, .plato--d, .plato--e { aspect-ratio: auto; }
+}
+@media (prefers-reduced-motion: reduce) { .plato img { transition: none; } }
+
 /* ---------- Visor + lightbox ---------- */
 .viewer { position: fixed; inset: 0; z-index: 100; background: #060f0a; display: flex; flex-direction: column; }
 .viewer__bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; color: var(--bone); font-size: .72rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; background: rgba(255, 255, 255, .05); }

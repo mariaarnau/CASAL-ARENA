@@ -267,12 +267,45 @@ page("quienes-somos.html", "Quiénes somos · Casal Arena València",
      "quienes-somos.html", about, image="assets/img/local-mural-panoramica.jpg")
 
 # ============================ CARTA ============================
+lightbox = """<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
+  <button class="vbtn" id="lbClose" type="button" aria-label="Cerrar">×</button>
+  <img id="lbImg" alt="">
+</div>
+"""
+
 taste = "".join(f"<div>{t}</div>" for t in ["Buen café", "Buen jamón", "Tapeo", "Buena cerveza de bodega"])
-carta = phero("assets/img/mesa-tapas.jpg", "Tasca · Cafetería", "La carta", "50% 38%") + f"""
+def plato(cls, src, alt, titulo, texto):
+    return (f'<figure class="plato {cls} reveal"><button type="button" data-src="{src}" data-alt="{alt}">'
+            f'<img src="{src}" alt="{alt}" loading="lazy"></button>'
+            f'<figcaption><b>{titulo}</b><span>{texto}</span></figcaption></figure>')
+
+platos = "\n    ".join([
+    plato("plato--a", "assets/img/comida/embutido-iberico.jpg", "Plato de embutidos ibéricos con picos y frutos secos", "Embutidos y jamón ibérico", "Para compartir en mesa"),
+    plato("plato--b", "assets/img/comida/focaccia-pulled-pork.jpg", "Focaccia de pulled pork con queso", "Focaccia de pulled pork", "Con queso fundido"),
+    plato("plato--c", "assets/img/comida/tabla-quesos.jpg", "Tabla de quesos con uvas, nueces y mermelada", "Tabla de quesos", "Uvas, nueces y mermelada"),
+    plato("plato--d", "assets/img/comida/bocadillos-mostrador.jpg", "Bocadillos en el mostrador", "Bocadillos del mostrador", "Pan crujiente"),
+    plato("plato--e", "assets/img/comida/ensaladilla-rusa.jpg", "Ensaladilla rusa con picos", "Ensaladilla rusa", "Con picos y pimentón"),
+    plato("plato--f", "assets/img/comida/cerveza-bodega.jpg", "Cañas de cerveza de bodega y tinto de verano en la barra", "Cerveza de bodega", "Y tinto de verano"),
+    plato("plato--g", "assets/img/comida/focaccia-mortadela.jpg", "Focaccia de mortadela sobre la mesa", "Focaccia de mortadela", "Para acompañar las cañas"),
+])
+
+carta = phero("assets/img/comida/embutido-iberico.jpg", "Tasca · Cafetería", "La carta", "50% 55%") + f"""
 <section class="sec darker" style="padding-block:0">
   <div class="wrap"><div class="taste">{taste}</div></div>
 </section>
 
+
+<section class="sec darker">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="eyebrow">De la barra a la mesa</p><h2 class="display h-lg">Hecho para <em class="serif-i">compartir</em></h2></div>
+      <p class="muted" style="max-width:34ch;margin:0">Pulsa en cualquier foto para verla en grande.</p>
+    </div>
+    <div class="platos" data-lightbox>
+    {platos}
+    </div>
+  </div>
+</section>
 
 <section class="sec">
   <div class="wrap">
@@ -303,7 +336,7 @@ viewer = """<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria
 """
 page("carta.html", "La carta · Casal Arena València",
      "Carta de Casal Arena: tapeo, buen jamón, buen café y cerveza de bodega, con precios, junto al Roig Arena en València.",
-     "carta.html", carta, extra=viewer, image="assets/img/mesa-tapas.jpg")
+     "carta.html", carta, extra=viewer + lightbox, image="assets/img/comida/embutido-iberico.jpg")
 
 # ============================ EL LOCAL ============================
 def shot(src, alt):
@@ -355,11 +388,6 @@ local = phero("assets/img/local-pared-casal-arena.jpg", "Un rincón con sabor a 
     </div>
   </div>
 </section>
-"""
-lightbox = """<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada" hidden>
-  <button class="vbtn" id="lbClose" type="button" aria-label="Cerrar">×</button>
-  <img id="lbImg" alt="">
-</div>
 """
 page("el-local.html", "El local · Casal Arena València",
      "Conoce el local de Casal Arena: un mural de naranjas convertidas en balones, banquetas naranjas y ambiente cálido junto al Roig Arena.",
