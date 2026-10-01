@@ -256,11 +256,18 @@ carta = phero("assets/img/mesa-tapas.jpg", "Tasca · Cafetería", "La carta", "5
   <div class="wrap"><div class="taste">{taste}</div></div>
 </section>
 
-<div class="catnav"><div class="wrap catnav__in" id="catnavIn"><button class="btn btn--solid" type="button" data-open-carta>Ver la carta a pantalla completa</button></div></div>
 
 <section class="sec">
   <div class="wrap">
-    <div class="sheets" id="sheets"></div>
+    <div class="sec-head reveal">
+      <div><p class="eyebrow">Nuestra carta</p><h2 class="display h-lg">Tal y como la tienes en mesa</h2></div>
+      <button class="btn btn--solid" type="button" data-open-carta="0">Ver a pantalla completa</button>
+    </div>
+    <div class="cartapages reveal" id="cartaPages"></div>
+    <details class="textcarta" id="carta-texto">
+      <summary>Ver la carta en texto</summary>
+      <div class="sheets" id="sheets"></div>
+    </details>
     <p class="muted" data-carta-nota style="margin-top:24px;text-align:center"></p>
   </div>
 </section>

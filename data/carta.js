@@ -12,6 +12,12 @@
   window.CARTA = {
     demo: false,
     pdf: null,
+    // Páginas originales de la carta (imágenes). Es la versión que manda; "hojas" es la versión en texto.
+    paginas: [
+      { src: "assets/img/carta/portada.jpg", t: "Portada", alt: "Portada de la carta de Casal Arena València" },
+      { src: "assets/img/carta/hoja-1-tapeo.jpg", t: "Tapeo, platos y bebidas", alt: "Carta: tapeo, platos, vinos, cervezas, tercios y copas" },
+      { src: "assets/img/carta/hoja-2-dulce.jpg", t: "Dulce, salado y café", alt: "Carta: dulce y salado, café, bebidas e infusiones" }
+    ],
     nota: "Compruebe los alérgenos con el personal.",
     hojas: [
       { columnas: [

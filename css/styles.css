@@ -215,6 +215,19 @@ button { font: inherit; color: inherit; }
 .taste div + div { border-left: 1px solid rgba(241, 232, 214, .25); }
 .taste small { display: block; font-family: var(--f-serif); font-style: italic; text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--gold-lt); font-size: 1rem; margin-top: 8px; }
 
+/* ---------- Carta: páginas originales ---------- */
+.cartapages { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2.4vw, 32px); align-items: start; }
+.cartapage { padding: 0; border: 0; background: none; cursor: zoom-in; text-align: left; display: grid; gap: 12px; }
+.cartapage img { width: 100%; height: auto; box-shadow: 0 18px 44px rgba(20, 32, 26, .28); transition: transform .5s var(--ease), box-shadow .5s; }
+.cartapage:hover img { transform: translateY(-6px); box-shadow: 0 28px 56px rgba(20, 32, 26, .34); }
+.cartapage span { font-family: var(--f-display); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.textcarta { margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid rgba(20, 32, 26, .25); padding-top: 24px; }
+.textcarta summary { cursor: pointer; font-family: var(--f-display); font-weight: 600; letter-spacing: .2em; text-transform: uppercase; font-size: 1.1rem; list-style: none; }
+.textcarta summary::before { content: "+"; display: inline-block; width: 1.4em; color: var(--orange-deep); }
+.textcarta[open] summary::before { content: "–"; }
+.textcarta .sheets { margin-top: 28px; }
+.viewer__scroll img { width: min(940px, 100%); height: auto; box-shadow: 0 20px 60px rgba(0, 0, 0, .5); }
+
 /* ---------- Carta (réplica del diseño de la carta impresa) ---------- */
 .sheets { display: grid; gap: clamp(28px, 4vw, 56px); }
 .sheet {
@@ -379,6 +392,7 @@ body.is-locked { overflow: hidden; }
   .foot { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 760px) {
+  .cartapages { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
   .sheet__cols { grid-template-columns: 1fr; }
   .two { grid-template-columns: 1fr; }
   .two > div + div { border-left: 0; padding-left: 0; margin-top: 10px; }

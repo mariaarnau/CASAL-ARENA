@@ -207,12 +207,14 @@
         "</div>" + (C.nota ? '<p class="sheet__foot">' + esc(C.nota) + "</p>" : "") + "</article>";
     }).join("");
   }
-  var sheetsBox = $("#sheets"), cn = $("#catnavIn");
+  var sheetsBox = $("#sheets"), pagesBox = $("#cartaPages");
+  if (pagesBox) {
+    pagesBox.innerHTML = (C.paginas || []).map(function (pg, i) {
+      return '<button class="cartapage" type="button" data-open-carta="' + i + '"><img src="' + esc(pg.src) + '" alt="' + esc(pg.alt) + '" loading="lazy"><span>' + esc(pg.t) + "</span></button>";
+    }).join("");
+  }
   if (sheetsBox) {
     sheetsBox.innerHTML = sheetsHTML();
-    var secs = [];
-    (C.hojas || []).forEach(function (h) { h.columnas.forEach(function (col) { col.forEach(function (sc) { secs.push(sc); }); }); });
-    cn.insertAdjacentHTML("afterbegin", secs.map(function (sc) { return '<a href="#' + sc.id + '">' + esc(sc.t) + "</a>"; }).join(""));
     $$("[data-carta-nota]").forEach(function (el) { el.textContent = C.nota || ""; });
   }
 
@@ -225,12 +227,20 @@
       return;
     }
     pdf.hidden = true;
+    if (C.paginas && C.paginas.length) {
+      vBody.innerHTML = C.paginas.map(function (pg) { return '<img src="' + esc(pg.src) + '" alt="' + esc(pg.alt) + '">'; }).join("");
+      return;
+    }
     vBody.innerHTML = '<div class="sheets">' + sheetsHTML() + "</div>";
   }
-  function openViewer() { lastFocus = document.activeElement; buildViewer(); viewer.hidden = false; document.body.classList.add("is-locked"); $("#viewerClose").focus(); }
+  function openViewer(i) {
+    lastFocus = document.activeElement; buildViewer(); viewer.hidden = false; document.body.classList.add("is-locked"); $("#viewerClose").focus();
+    var imgs = vBody.querySelectorAll("img"); vBody.scrollTop = 0;
+    if (i && imgs[i]) setTimeout(function () { vBody.scrollTop = imgs[i].offsetTop - 70; }, 60);
+  }
   function closeViewer() { viewer.hidden = true; document.body.classList.remove("is-locked"); if (lastFocus) lastFocus.focus(); }
   if (viewer) {
-    $$("[data-open-carta]").forEach(function (b) { b.addEventListener("click", openViewer); });
+    $$("[data-open-carta]").forEach(function (b) { b.addEventListener("click", function () { openViewer(parseInt(b.dataset.openCarta, 10) || 0); }); });
     $("#viewerClose").addEventListener("click", closeViewer);
     $("#viewerPrint").addEventListener("click", function () { window.print(); });
   }
