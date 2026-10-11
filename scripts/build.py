@@ -102,13 +102,15 @@ SCRIPTS = """<script src="data/carta.js"></script>
 """
 
 
-def phero(img, eyebrow, title, pos="50% 50%"):
-    return f"""<section class="phero">
+def phero(img, eyebrow, title, pos="50% 50%", xl=False, sub=""):
+    cls = " phero--xl" if xl else ""
+    extra = f'\n    <span class="phero__rule"></span>\n    <p class="phero__sub">{sub}</p>' if xl else ""
+    return f"""<section class="phero{cls}">
   <img src="{img}" alt="" style="object-position:{pos}">
   {COURT.format(cls="phero__court")}
   <div class="wrap">
     <p class="eyebrow">{eyebrow}</p>
-    <h1 class="display">{title}</h1>
+    <h1 class="display">{title}</h1>{extra}
   </div>
 </section>
 """
@@ -394,13 +396,13 @@ page("el-local.html", "El local · Casal Arena València",
      "el-local.html", local, extra=lightbox, image="assets/img/local-pared-casal-arena.jpg")
 
 # ============================ VALENCIA BASKET ============================
-basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", "Vive el partido", "50% 35%") + f"""
+basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", "Vive el <em>partido</em>", "50% 35%", xl=True, sub="Liga Endesa en pantalla grande") + f"""
 <section class="sec">
   <div class="wrap">
     <div class="sec-head reveal">
       <img class="vb-logo" src="assets/img/valencia-basket-logo.png" alt="Valencia Basket" width="112" height="150">
       <p class="lead" style="max-width:24ch">Pantalla grande y ambiente de <em>pabellón</em>.</p>
-      <p class="muted" style="max-width:46ch;margin:0">Estamos a un paso del Roig Arena. Ven a ver al Valencia Basket con nosotros, antes, durante o después del partido, y disfruta del ambiente de la ciudad.</p>
+      <p class="muted" style="max-width:46ch;margin:0">Retransmitimos los partidos de la Liga Endesa del Valencia Basket. Estamos a un paso del Roig Arena: ven a verlos con nosotros, antes, durante o después del partido, y disfruta del ambiente de la ciudad.</p>
     </div>
 
     <div class="board reveal" id="board">
@@ -416,12 +418,10 @@ basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", 
     <div class="chips" role="group" aria-label="Filtrar partidos">
       <button class="chip" type="button" data-filter="all" aria-pressed="true">Todos</button>
       <button class="chip" type="button" data-filter="home" aria-pressed="false">En el Roig Arena</button>
-      <button class="chip" type="button" data-filter="Euroliga" aria-pressed="false">Euroliga</button>
-      <button class="chip" type="button" data-filter="Liga Endesa" aria-pressed="false">Liga Endesa</button>
     </div>
     <div id="fixtures"></div>
     <p style="margin-top:28px"><button class="btn" type="button" id="moreFx" style="color:var(--pine-900)" hidden>Ver más partidos</button></p>
-    <p class="muted" style="margin-top:36px;font-size:.92rem">Calendario del equipo masculino según la web oficial del club. Fechas y horarios sujetos a cambios.</p>
+    <p class="muted" style="margin-top:36px;font-size:.92rem">Partidos de la Liga Endesa del equipo masculino, según la web oficial del club. Fechas y horarios sujetos a cambios.</p>
     <p style="margin-top:20px"><a class="btn" style="color:var(--pine-900)" data-calendar href="#">Ver calendario completo {ARROW}</a></p>
   </div>
 </section>
@@ -437,7 +437,7 @@ basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", 
 </section>
 """
 page("valencia-basket.html", "Valencia Basket · Casal Arena València",
-     "Ve los partidos del Valencia Basket en pantalla grande en Casal Arena, a un paso del Roig Arena. Próximos partidos de Euroliga y Liga Endesa.",
+     "Ve los partidos del Valencia Basket en pantalla grande en Casal Arena, a un paso del Roig Arena. Próximos partidos de la Liga Endesa.",
      "valencia-basket.html", basket, image="assets/img/tele-partido.jpg")
 
 # ============================ CONTACTO ============================

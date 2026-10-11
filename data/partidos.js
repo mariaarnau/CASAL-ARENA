@@ -8,6 +8,8 @@
 window.PARTIDOS = {
   verificado: true,
   actualizado: "2026-10-01",
+  // Solo se muestran estas competiciones en la web (son las que se retransmiten en Casal Arena).
+  competiciones: ["Liga Endesa"],
   partidos: [
     { comp: "Euroliga", rival: "LDLC Asvel Villeurbanne", local: false, fecha: "2026-10-02T20:00:00+02:00" },
     { comp: "Liga Endesa", rival: "Casademont Zaragoza", local: false, fecha: "2026-10-04T17:00:00+02:00" },

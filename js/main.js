@@ -98,6 +98,7 @@
   function upcoming() {
     var cut = Date.now() - 2 * 3600 * 1000; // el partido sigue visible 2 h después del inicio
     return P.partidos.map(function (m) { return Object.assign({}, m, { d: new Date(m.fecha) }); })
+      .filter(function (m) { return !P.competiciones || P.competiciones.indexOf(m.comp) >= 0; })
       .filter(function (m) { return m.d.getTime() > cut; }).sort(function (a, b) { return a.d - b.d; });
   }
   function slug(n) { return n.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }

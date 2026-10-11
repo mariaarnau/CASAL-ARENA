@@ -403,3 +403,12 @@ body.is-locked { overflow: hidden; }
   .hero__title, .hero__tag, .hero__cta { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ---------- Cabecera grande (Valencia Basket) ---------- */
+.phero--xl { min-height: clamp(340px, 56vh, 560px); }
+.phero--xl .eyebrow { letter-spacing: .34em; margin-bottom: 14px; }
+.phero--xl h1 { font-size: clamp(3.8rem, 11.5vw, 9.5rem); line-height: .92; letter-spacing: -.028em; }
+.phero--xl h1 em { font-style: italic; color: var(--gold-lt); padding-right: .04em; }
+.phero__rule { display: block; width: 84px; height: 1px; background: var(--gold-lt); margin: 26px 0 14px; }
+.phero__sub { margin: 0; font-family: var(--f-serif); font-style: italic; font-size: clamp(1.2rem, 2vw, 1.6rem); opacity: .9; }
+@media (max-width: 560px) { .phero--xl h1 { font-size: clamp(3.2rem, 17vw, 4.6rem); } }
