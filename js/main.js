@@ -168,6 +168,32 @@
     draw();
   }
 
+
+  /* ---------- Eventos del Roig Arena ---------- */
+  var EV = window.EVENTOS, evBox = $("#eventsList");
+  if (evBox) {
+    var today = fmt(new Date(), { year: "numeric", month: "2-digit", day: "2-digit" }).split("/").reverse().join("-");
+    var evs = ((EV && EV.eventos) || []).filter(function (e) { return (e.hasta || e.fecha) >= today; });
+    var evLimit = 8, moreEv = $("#moreEv");
+    var drawEv = function () {
+      if (!evs.length) { $("#eventos").hidden = true; return; }
+      var shown = evs.slice(0, evLimit); moreEv.hidden = evs.length <= evLimit;
+      var html = "", cur = "";
+      shown.forEach(function (e) {
+        var d = new Date(e.fecha + "T12:00:00");
+        var mk = fmt(d, { month: "long", year: "numeric" });
+        if (mk !== cur) { cur = mk; html += '<h3 class="month">' + esc(mk.charAt(0).toUpperCase() + mk.slice(1)) + "</h3>"; }
+        var rango = e.hasta ? " – " + fmt(new Date(e.hasta + "T12:00:00"), { day: "numeric", month: "short" }).replace(/\./g, "") : "";
+        html += '<article class="fx fx--ev"><div class="fx__d"><b>' + fmt(d, { day: "2-digit" }) + "</b><span>" + esc(fmt(d, { weekday: "short" }).replace(".", "")) + "</span></div>" +
+          '<div><div class="fx__t">' + esc(e.titulo) + '</div><div class="fx__c"><a class="evlink" href="' + esc(e.url) + '" target="_blank" rel="noopener">Más información</a>' + (rango ? "<span>Hasta" + esc(rango.replace(" –", "")) + "</span>" : "") + "</div></div>" +
+          '<div class="fx__h">' + (e.hora ? esc(e.hora) : "") + "</div></article>";
+      });
+      evBox.innerHTML = html;
+    };
+    moreEv.addEventListener("click", function () { evLimit += 8; drawEv(); });
+    drawEv();
+  }
+
   /* ---------- Carta ---------- */
   var G = '<svg viewBox="0 0 24 24" fill="#fff" stroke="#fff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
   var GEN = "Alérgeno: consulta con el personal";

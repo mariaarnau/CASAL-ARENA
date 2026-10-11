@@ -95,6 +95,7 @@ def footer():
 
 SCRIPTS = """<script src="data/carta.js"></script>
 <script src="data/partidos.js"></script>
+<script src="data/eventos.js"></script>
 <script src="data/contacto.js"></script>
 <script src="js/main.js"></script>
 </body>
@@ -423,6 +424,19 @@ basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", 
     <p style="margin-top:28px"><button class="btn" type="button" id="moreFx" style="color:var(--pine-900)" hidden>Ver más partidos</button></p>
     <p class="muted" style="margin-top:36px;font-size:.92rem">Partidos de la Liga Endesa del equipo masculino, según la web oficial del club. Fechas y horarios sujetos a cambios.</p>
     <p style="margin-top:20px"><a class="btn" style="color:var(--pine-900)" data-calendar href="#">Ver calendario completo {ARROW}</a></p>
+  </div>
+</section>
+
+<section class="sec light-2" id="eventos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="eyebrow">Roig Arena</p><h2 class="display h-lg">Eventos en el Roig Arena</h2></div>
+      <p class="muted" style="max-width:44ch;margin:0">Conciertos y espectáculos a un paso de nuestra puerta. Ven antes a tomar algo o después a cenar.</p>
+    </div>
+    <div id="eventsList"></div>
+    <p style="margin-top:28px"><button class="btn" type="button" id="moreEv" hidden>Ver más eventos</button></p>
+    <p class="muted" style="margin-top:28px;font-size:.88rem">Programación del Roig Arena. Fechas y horarios sujetos a cambios.</p>
+    <p style="margin-top:16px"><a class="btn" id="allEvents" target="_blank" rel="noopener" href="https://www.roigarena.com/es/eventos/">Ver todos los eventos {ARROW}</a></p>
   </div>
 </section>
 
