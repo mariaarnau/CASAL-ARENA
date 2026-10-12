@@ -14,7 +14,7 @@ NAV = [
     ("quienes-somos.html", "Quiénes somos"),
     ("carta.html", "La carta"),
     ("el-local.html", "El local"),
-    ("valencia-basket.html", "Valencia Basket"),
+    ("valencia-basket.html", "Basket y eventos"),
     ("contacto.html", "Contacto"),
 ]
 
@@ -203,7 +203,6 @@ home = f"""<section class="hero">
     </div>
     <div class="vive__clips reveal">
       <figure class="clip clip--a"><video src="assets/video/lleno-9722.mp4" poster="assets/img/lleno-9722.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Casal Arena lleno de gente en la puerta"></video></figure>
-      <figure class="clip clip--b"><video src="assets/video/lleno-9611.mp4" poster="assets/img/lleno-9611.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Gente esperando en la puerta de Casal Arena"></video></figure>
     </div>
   </div>
 </section>
@@ -452,7 +451,7 @@ page("el-local.html", "El local · Casal Arena València",
      "el-local.html", local, extra=lightbox, image="assets/img/local-pared-casal-arena.jpg")
 
 # ============================ VALENCIA BASKET ============================
-basket = phero("assets/img/tele-partido.jpg", "Valencia Basket en Casal Arena", "Vive el <em>partido</em>", "50% 35%", xl=True, sub="Liga Endesa en pantalla grande") + f"""
+basket = phero("assets/img/tele-partido.jpg", "Valencia Basket y eventos del Roig Arena", "Vive el <em>partido</em>", "50% 35%", xl=True, sub="Liga Endesa en pantalla grande") + f"""
 <section class="sec">
   <div class="wrap">
     <div class="sec-head reveal">

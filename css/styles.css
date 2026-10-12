@@ -440,3 +440,27 @@ body.is-locked { overflow: hidden; }
 .masonry--sq > * { margin: 0; aspect-ratio: 1 / 1; }
 .masonry--sq img { height: 100%; object-fit: cover; }
 @media (max-width: 560px) { .masonry--sq { grid-template-columns: 1fr 1fr; } }
+
+/* Un solo vídeo del local lleno */
+.vive__clips { grid-template-columns: 1fr; justify-items: center; padding-bottom: 0; }
+.vive__clips::before { display: none; }
+.vive__clips .clip { width: min(340px, 100%); }
+.vive__clips .clip--a { transform: none; }
+/* Sin animación de aparición: todo el contenido siempre visible */
+.js .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+
+/* ---------- Legibilidad: tamaños mínimos de texto (móvil y escritorio) ---------- */
+.eyebrow, .btn, .nav a:not(.btn), .hero__bar small, .board__lab, .count small, .chip, .fx__d span, .tag, .evlink,
+.social small, .info h3, .foot h4, .cartapage span, .textcarta summary, .viewer__bar, .brand b { font-size: max(.78rem, 12px); }
+.plato figcaption span { font-size: .78rem; }
+.foot a, .foot p, .tile p, .hours td, .note, .about__photo figcaption, .fx__c, .muted, .board__meta, .mini-next .when, .pillar p { font-size: max(.95rem, 15px); }
+.hero__bar strong, .fx__t { font-size: max(1rem, 15px); }
+.count small { letter-spacing: .14em; }
+@media (max-width: 560px) {
+  body { font-size: 1.0625rem; }
+  .btn { padding: 14px 24px; }
+  .chip { padding: 11px 16px; }
+  .hero__bar strong { font-size: 1rem; }
+  .fx__h { font-size: 1.35rem; }
+  .vive__clips .clip { width: min(300px, 100%); }
+}
