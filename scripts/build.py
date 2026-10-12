@@ -34,8 +34,8 @@ def head(title, desc, image="assets/img/fachada-noche.jpg"):
 <link rel="icon" type="image/png" href="assets/img/logo-monograma.png">
 <link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css">
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/fonts.css?v=20261012b">
+<link rel="stylesheet" href="css/styles.css?v=20261012b">
 </head>
 <body>
 """
@@ -97,7 +97,7 @@ SCRIPTS = """<script src="data/carta.js"></script>
 <script src="data/partidos.js"></script>
 <script src="data/eventos.js"></script>
 <script src="data/contacto.js"></script>
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261012b"></script>
 </body>
 </html>
 """
@@ -202,7 +202,7 @@ home = f"""<section class="hero">
       <a class="btn" href="valencia-basket.html">Próximos partidos {ARROW}</a>
     </div>
     <div class="vive__clips reveal">
-      <figure class="clip clip--a"><video src="assets/video/lleno-9722.mp4" poster="assets/img/lleno-9722.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Casal Arena lleno de gente en la puerta"></video></figure>
+      <figure class="clip clip--a"><span class="clip__rec" aria-hidden="true">REC</span><video src="assets/video/lleno-9722.mp4" poster="assets/img/lleno-9722.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Casal Arena lleno de gente en la puerta"></video></figure>
     </div>
   </div>
 </section>
