@@ -17,6 +17,9 @@ window.CONTACTO = {
   instagramUser: "@casalarena_",
   tiktok: "https://www.tiktok.com/@casalarenavalencia?lang=es",
   tiktokUser: "@casalarenavalencia",
+  // Enlace a la ficha de Google. Para abrir directamente la ventana de "escribir reseña", pon aquí el enlace
+  // de "Pedir reseñas" de tu Perfil de Empresa de Google (empieza por https://g.page/r/...).
+  resenas: "https://maps.google.com/?cid=8560584092342350671",
   calendarioBasket: "https://www.valenciabasket.com/en/male-calendar",
   precioMedio: "10–20 € por persona",
   mapsQuery: "Casal Arena Valencia, C. d'Antonio Ferrandis, 24, 46013 València",

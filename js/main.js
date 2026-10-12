@@ -89,6 +89,7 @@
   $$("[data-insta-user]").forEach(function (el) { el.textContent = K.instagramUser || ""; });
   $$("[data-tiktok-user]").forEach(function (el) { el.textContent = K.tiktokUser || ""; });
   $$("[data-price]").forEach(function (el) { el.textContent = K.precioMedio || ""; });
+  $$("[data-reviews]").forEach(function (a) { a.href = K.resenas || "#"; });
   $$("[data-calendar]").forEach(function (a) { a.href = K.calendarioBasket || "#"; a.target = "_blank"; a.rel = "noopener"; });
   var mf = $("#mapFrame");
   if (mf) mf.src = "https://www.google.com/maps?q=" + q + "&output=embed";

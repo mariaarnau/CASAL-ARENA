@@ -124,6 +124,21 @@ def page(name, title, desc, active, body, extra="", image="assets/img/fachada-no
     print("OK", name)
 
 
+STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.6 6.1 20.8l1.2-6.5L2.5 9.7l6.6-.9z"/></svg>'
+REVIEWS = f"""<section class="sec darker reviews">
+  <div class="wrap reviews__in reveal">
+    <div class="reviews__stars" aria-hidden="true">{STAR*5}</div>
+    <p class="eyebrow">Tu opinión cuenta</p>
+    <h2 class="display h-lg">¿Te ha gustado <em class="serif-i">Casal Arena</em>?</h2>
+    <p class="muted reviews__txt">Si has pasado un buen rato con nosotros, nos ayudas muchísimo dejando una reseña en Google. Solo te llevará un minuto.</p>
+    <div class="reviews__cta">
+      <a class="btn btn--solid" data-reviews target="_blank" rel="noopener" href="#">Dejar una reseña en Google</a>
+    </div>
+  </div>
+</section>
+
+"""
+
 # ============================ INICIO ============================
 ticker_items = ["Tasca · Cafetería", "Buen café", "Buen jamón", "Tapeo", "Buena cerveza de bodega", "Junto al Roig Arena", "València"]
 ticker = "".join(f'<span class="ticker__item">{t}</span>' for t in ticker_items)
@@ -178,6 +193,21 @@ home = f"""<section class="hero">
   </div>
 </section>
 
+<section class="sec dark vive">
+  <div class="wrap vive__in">
+    <div class="vive__txt reveal">
+      <p class="eyebrow">Así se vive</p>
+      <h2 class="display h-lg">Cuando se llena, <em class="serif-i">se nota</em></h2>
+      <p class="muted">Los días de partido y de concierto, la puerta no para. Ven con tiempo y ponte cómodo: aquí el ambiente forma parte de la experiencia.</p>
+      <a class="btn" href="valencia-basket.html">Próximos partidos {ARROW}</a>
+    </div>
+    <div class="vive__clips reveal">
+      <figure class="clip clip--a"><video src="assets/video/lleno-9722.mp4" poster="assets/img/lleno-9722.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Casal Arena lleno de gente en la puerta"></video></figure>
+      <figure class="clip clip--b"><video src="assets/video/lleno-9611.mp4" poster="assets/img/lleno-9611.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Gente esperando en la puerta de Casal Arena"></video></figure>
+    </div>
+  </div>
+</section>
+
 <section class="sec light-2">
   <div class="wrap duo">
     <div class="panel panel--dark reveal">
@@ -195,6 +225,7 @@ home = f"""<section class="hero">
   </div>
 </section>
 """
+home += REVIEWS
 page("index.html", "Casal Arena València · Tasca y cafetería junto al Roig Arena",
      "Casal Arena: tasca familiar temática de baloncesto junto al Roig Arena, en València. Carta, horario y los partidos del Valencia Basket en pantalla grande.",
      "", home)
@@ -292,6 +323,16 @@ platos = "\n    ".join([
     plato("plato--g", "assets/img/comida/focaccia-mortadela.jpg", "Focaccia de mortadela sobre la mesa", "Focaccia de mortadela", "Para acompañar las cañas"),
 ])
 
+def foto(src, alt):
+    return f'<button type="button" data-src="{src}" data-alt="{alt}"><img src="{src}" alt="{alt}" loading="lazy"></button>'
+mas = "\n    ".join([
+    foto("assets/img/comida/nachos.jpg", "Nachos con guacamole"),
+    foto("assets/img/comida/cafe.jpg", "Café sobre la barra"),
+    foto("assets/img/comida/hummus.jpg", "Hummus con picos"),
+    foto("assets/img/comida/cookies.jpg", "Cookies de doble chocolate"),
+    foto("assets/img/comida/aperitivo.jpg", "Copa de aperitivo con naranja y aceituna"),
+    foto("assets/img/comida/mesa-tapas-2.jpg", "Mesa con tapas, cerveza y tinto de verano"),
+])
 carta = phero("assets/img/comida/embutido-iberico.jpg", "Tasca · Cafetería", "La carta", "50% 55%") + f"""
 <section class="sec darker" style="padding-block:0">
   <div class="wrap"><div class="taste">{taste}</div></div>
@@ -306,6 +347,18 @@ carta = phero("assets/img/comida/embutido-iberico.jpg", "Tasca · Cafetería", "
     </div>
     <div class="platos" data-lightbox>
     {platos}
+    </div>
+  </div>
+</section>
+
+<section class="sec light-2">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><p class="eyebrow">Más de la mesa</p><h2 class="display h-lg">Un poco de todo</h2></div>
+      <p class="muted" style="max-width:34ch;margin:0">Nachos, hummus, cookies, café y algo para el aperitivo.</p>
+    </div>
+    <div class="masonry masonry--sq" data-lightbox>
+    {mas}
     </div>
   </div>
 </section>
@@ -361,6 +414,8 @@ gallery = "\n    ".join([
     clip("assets/video/clip-7869.mp4", "assets/img/clip-7869.jpg"),
     shot("assets/img/local-sala.jpg", "Sala principal de Casal Arena"),
     shot("assets/img/local-mural-cojines.jpg", "Mural y banquetas naranjas"),
+    shot("assets/img/local-barra-cobre.jpg", "La barra con los depósitos de cobre"),
+    shot("assets/img/fachada-noche-2.jpg", "Casal Arena iluminado de noche"),
 ])
 local = phero("assets/img/local-pared-casal-arena.jpg", "Un rincón con sabor a València", "El local", "50% 45%") + f"""
 <section class="sec">
@@ -483,6 +538,7 @@ contacto = phero("assets/img/fachada-noche.jpg", "Te esperamos en casa", "Contac
   </div>
 </section>
 """
+contacto += REVIEWS
 page("contacto.html", "Contacto · Casal Arena València",
      "Dónde estamos, horario y redes sociales de Casal Arena, tasca y cafetería junto al Roig Arena en València.",
      "contacto.html", contacto, image="assets/img/fachada-noche.jpg")
