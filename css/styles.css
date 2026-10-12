@@ -464,3 +464,8 @@ body.is-locked { overflow: hidden; }
   .fx__h { font-size: 1.35rem; }
   .vive__clips .clip { width: min(300px, 100%); }
 }
+
+/* Marco dorado doble alrededor del vídeo (pegado al vídeo) */
+.vive__clips::before { content: none !important; }
+.vive__clips { padding: 14px; }
+.vive__clips .clip { border: 1px solid var(--gold-lt); box-shadow: 0 0 0 8px var(--pine-900), 0 0 0 9px rgba(229, 200, 119, .55), 0 30px 60px rgba(0, 0, 0, .5); margin: 9px; }
