@@ -144,7 +144,6 @@ ticker_items = ["Tasca · Cafetería", "Buen café", "Buen jamón", "Tapeo", "Bu
 ticker = "".join(f'<span class="ticker__item">{t}</span>' for t in ticker_items)
 
 home = f"""<section class="hero">
-  <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__shade"></div>
   {COURT.format(cls="hero__court")}
   <div class="wrap hero__body">
