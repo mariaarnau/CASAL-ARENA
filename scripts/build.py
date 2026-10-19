@@ -591,9 +591,9 @@ page("contacto.html", "Contacto · Casal Arena València",
 # ============================ PÁGINAS LEGALES ============================
 # Datos del titular. Rellena los campos vacíos y ejecuta de nuevo: python3 scripts/build.py
 LEGAL = {
-    "titular": "",          # nombre y apellidos o razón social
-    "nif": "",              # NIF / CIF
-    "email": "",            # correo de contacto
+    "titular": "María Teresa Gallart Andrés",          # nombre y apellidos o razón social
+    "nif": "20152656X",              # NIF / CIF
+    "email": "pedrodumon@gmail.com",            # correo de contacto
     "domicilio": "C. d'Antonio Ferrandis, 24, 46013 València",
     "actividad": "tasca y cafetería",
     "dominio": "casalarena.com",
