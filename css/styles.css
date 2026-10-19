@@ -100,7 +100,7 @@ button { font: inherit; color: inherit; }
 .hero__phone { position: absolute; inset: 0; z-index: 0; }
 .hero__shade, .hero__court { z-index: 1; }
 .hero__body { z-index: 2; }
-.hero__shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(8, 23, 15, .38), rgba(8, 23, 15, .7)), linear-gradient(0deg, rgba(8, 23, 15, .7), transparent 40%); }
+.hero__shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(8, 23, 15, .38), rgba(8, 23, 15, .72)), linear-gradient(90deg, rgba(8, 23, 15, .55), transparent 20%, transparent 80%, rgba(8, 23, 15, .55)), linear-gradient(0deg, rgba(8, 23, 15, .85), transparent 45%); }
 .hero__body { position: static; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 76px; }
 .hero__copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
 .hero__title { font-size: clamp(2.8rem, 6.4vw, 5.2rem); letter-spacing: .02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .28em; margin: 0 0 14px; font-weight: 400; animation: fadeup 1.2s var(--ease) both; }
@@ -361,10 +361,10 @@ body.is-locked { overflow: hidden; }
 .hero__phone { position: absolute; inset: 0; z-index: 0; }
 .hero__video { object-position: 50% 52%; }
 @media (max-width: 700px) {
-  .hero { height: auto; min-height: 0; display: flex; flex-direction: column; overflow: visible; }
+  .hero { height: auto; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
   .hero__shade, .hero__court { display: none; }
-  .hero .hero__body { position: relative; flex: none; height: clamp(560px, calc(100svh - var(--head-h)), 820px); justify-content: flex-start; padding: clamp(36px, 7svh, 64px) 0 0; overflow: hidden; }
-  .hero .hero__body::before { content: ""; position: absolute; inset: 0 auto 0 50%; width: 100vw; transform: translateX(-50%); z-index: 1; background: linear-gradient(180deg, rgba(8, 23, 15, .82) 0%, rgba(8, 23, 15, .55) 30%, rgba(8, 23, 15, .1) 55%, rgba(8, 23, 15, 0) 70%); pointer-events: none; }
+  .hero .hero__body { position: relative; flex: none; height: clamp(560px, calc(100svh - var(--head-h)), 820px); justify-content: flex-start; padding: clamp(36px, 7svh, 64px) 0 0; overflow: visible; }
+  .hero .hero__body::before { content: ""; position: absolute; inset: 0 auto 0 50%; width: 100vw; transform: translateX(-50%); z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(8, 23, 15, .85) 0%, rgba(8, 23, 15, .55) 28%, rgba(8, 23, 15, .08) 52%, rgba(8, 23, 15, 0) 66%, rgba(13, 37, 25, .55) 86%, var(--pine-900) 100%), linear-gradient(90deg, rgba(8, 23, 15, .5), rgba(8, 23, 15, 0) 16%, rgba(8, 23, 15, 0) 84%, rgba(8, 23, 15, .5)); }
   .hero .hero__phone { z-index: 0; inset: 0 auto 0 50%; width: 100vw; transform: translateX(-50%); }
   .hero .hero__title { font-size: clamp(3rem, 15vw, 4.2rem); margin-bottom: 10px; }
   .hero .hero__tag { margin-bottom: 22px; }
