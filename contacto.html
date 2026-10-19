@@ -66,7 +66,15 @@
         </div>
       </div>
     </div>
-    <div class="map reveal"><iframe id="mapFrame" title="Mapa de Casal Arena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    <div class="map reveal">
+      <iframe id="mapFrame" title="Mapa de Casal Arena" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
+      <div class="map__gate" id="mapGate">
+        <p class="display">Cómo llegar</p>
+        <p class="muted">Para ver el mapa interactivo se cargará contenido de Google, que puede usar cookies. <a href="cookies.html">Más información</a>.</p>
+        <button class="btn btn--solid" type="button" id="mapLoad">Cargar mapa</button>
+        <a class="link-arrow" data-directions href="#">Abrir en Google Maps</a>
+      </div>
+    </div>
   </div>
 </section>
 <section class="sec darker reviews">
@@ -109,13 +117,13 @@
         </ul>
       </div>
     </div>
-    <div class="foot__end"><span>© <span data-year></span> Casal Arena València</span><span>Tasca · Cafetería junto al Roig Arena</span></div>
+    <div class="foot__end"><span>© <span data-year></span> Casal Arena València</span><span class="foot__legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></span></div>
   </div>
 </footer>
 <script src="data/carta.js"></script>
 <script src="data/partidos.js"></script>
 <script src="data/eventos.js"></script>
 <script src="data/contacto.js"></script>
-<script src="js/main.js?v=20261012b"></script>
+<script src="js/main.js?v=20261019"></script>
 </body>
 </html>

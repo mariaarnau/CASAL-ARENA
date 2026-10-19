@@ -92,7 +92,11 @@
   $$("[data-reviews]").forEach(function (a) { a.href = K.resenas || "#"; });
   $$("[data-calendar]").forEach(function (a) { a.href = K.calendarioBasket || "#"; a.target = "_blank"; a.rel = "noopener"; });
   var mf = $("#mapFrame");
-  if (mf) mf.src = "https://www.google.com/maps?q=" + q + "&output=embed";
+  var mapLoad = $("#mapLoad");
+  if (mf && mapLoad) mapLoad.addEventListener("click", function () {
+    mf.src = "https://www.google.com/maps?q=" + q + "&output=embed";
+    mf.hidden = false; $("#mapGate").hidden = true;
+  });
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   /* ---------- Partidos ---------- */

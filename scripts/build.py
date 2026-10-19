@@ -87,7 +87,7 @@ def footer():
         </ul>
       </div>
     </div>
-    <div class="foot__end"><span>© <span data-year></span> Casal Arena València</span><span>Tasca · Cafetería junto al Roig Arena</span></div>
+    <div class="foot__end"><span>© <span data-year></span> Casal Arena València</span><span class="foot__legal"><a href="aviso-legal.html">Aviso legal</a><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a></span></div>
   </div>
 </footer>
 """
@@ -97,7 +97,7 @@ SCRIPTS = """<script src="data/carta.js"></script>
 <script src="data/partidos.js"></script>
 <script src="data/eventos.js"></script>
 <script src="data/contacto.js"></script>
-<script src="js/main.js?v=20261012b"></script>
+<script src="js/main.js?v=20261019"></script>
 </body>
 </html>
 """
@@ -538,7 +538,15 @@ contacto = phero("assets/img/fachada-noche.jpg", "Te esperamos en casa", "Contac
         </div>
       </div>
     </div>
-    <div class="map reveal"><iframe id="mapFrame" title="Mapa de Casal Arena" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+    <div class="map reveal">
+      <iframe id="mapFrame" title="Mapa de Casal Arena" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
+      <div class="map__gate" id="mapGate">
+        <p class="display">Cómo llegar</p>
+        <p class="muted">Para ver el mapa interactivo se cargará contenido de Google, que puede usar cookies. <a href="cookies.html">Más información</a>.</p>
+        <button class="btn btn--solid" type="button" id="mapLoad">Cargar mapa</button>
+        <a class="link-arrow" data-directions href="#">Abrir en Google Maps</a>
+      </div>
+    </div>
   </div>
 </section>
 """
@@ -546,3 +554,103 @@ contacto += REVIEWS
 page("contacto.html", "Contacto · Casal Arena València",
      "Dónde estamos, horario y redes sociales de Casal Arena, tasca y cafetería junto al Roig Arena en València.",
      "contacto.html", contacto, image="assets/img/fachada-noche.jpg")
+
+
+# ============================ PÁGINAS LEGALES ============================
+# Datos del titular. Rellena los campos vacíos y ejecuta de nuevo: python3 scripts/build.py
+LEGAL = {
+    "titular": "",          # nombre y apellidos o razón social
+    "nif": "",              # NIF / CIF
+    "email": "",            # correo de contacto
+    "domicilio": "C. d'Antonio Ferrandis, 24, 46013 València",
+    "actividad": "tasca y cafetería",
+    "dominio": "casalarena.com",
+    "actualizado": "19 de octubre de 2026",
+}
+
+def val(k, etiqueta):
+    v = LEGAL[k].strip()
+    return v if v else f'<span class="pend">[pendiente: {etiqueta}]</span>'
+
+def legal_page(fname, title, desc, h1, body):
+    html_body = phero("assets/img/fachada-noche.jpg", "Información legal", h1, "50% 45%") + f"""
+<section class="sec">
+  <div class="wrap legal">
+    <p class="muted">Última actualización: {LEGAL["actualizado"]}</p>
+{body}
+  </div>
+</section>
+"""
+    page(fname, title + " · Casal Arena València", desc, "", html_body)
+
+EMAIL = val("email", "correo de contacto")
+TIT = val("titular", "nombre o razón social del titular")
+NIF = val("nif", "NIF/CIF")
+
+legal_page("aviso-legal.html", "Aviso legal",
+    "Aviso legal de casalarena.com: datos del titular, condiciones de uso y propiedad intelectual.",
+    "Aviso legal", f"""
+    <h2>1. Datos identificativos</h2>
+    <p>En cumplimiento del artículo 10 de la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), se informa de que el sitio web <strong>{LEGAL["dominio"]}</strong> pertenece a:</p>
+    <ul>
+      <li><strong>Titular:</strong> {TIT}</li>
+      <li><strong>NIF/CIF:</strong> {NIF}</li>
+      <li><strong>Nombre comercial:</strong> Casal Arena València</li>
+      <li><strong>Domicilio:</strong> {LEGAL["domicilio"]}</li>
+      <li><strong>Correo electrónico:</strong> {EMAIL}</li>
+      <li><strong>Actividad:</strong> {LEGAL["actividad"]}</li>
+    </ul>
+    <h2>2. Objeto y condiciones de uso</h2>
+    <p>Este sitio web tiene carácter informativo: presenta el local, su carta, su horario y los partidos y eventos que se pueden seguir en él. Acceder y navegar por la web implica aceptar este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos, sin fines ilícitos ni que perjudiquen a terceros o al funcionamiento de la web.</p>
+    <h2>3. Contenidos y precios</h2>
+    <p>Hacemos lo posible por mantener actualizados la carta, los precios, los horarios y el calendario de partidos y eventos, pero pueden cambiar sin previo aviso. Los horarios pueden variar en función de los eventos del Roig Arena. Los datos de partidos y eventos proceden de fuentes de terceros (valenciabasket.com y roigarena.com) y pueden sufrir modificaciones ajenas a nosotros. Los precios de la carta incluyen IVA salvo que se indique lo contrario. La información sobre alérgenos es orientativa: consulta siempre con el personal del local.</p>
+    <h2>4. Propiedad intelectual e industrial</h2>
+    <p>Los textos, fotografías, vídeos, diseño, logotipos y demás elementos de esta web son propiedad del titular o se usan con autorización de sus propietarios. Los nombres y escudos de clubes deportivos, así como las marcas de terceros que aparezcan, pertenecen a sus respectivos titulares y se muestran únicamente con fines informativos, sin que implique relación comercial ni patrocinio. Queda prohibida su reproducción, distribución o transformación sin autorización expresa.</p>
+    <h2>5. Enlaces a terceros</h2>
+    <p>Esta web incluye enlaces a sitios de terceros (Google Maps, Instagram, TikTok, valenciabasket.com, roigarena.com). No nos hacemos responsables de sus contenidos ni de sus políticas de privacidad o cookies.</p>
+    <h2>6. Responsabilidad</h2>
+    <p>El titular no garantiza la disponibilidad continua de la web ni se hace responsable de los daños derivados de interrupciones, errores o de un uso indebido por parte del usuario.</p>
+    <h2>7. Legislación aplicable y jurisdicción</h2>
+    <p>Este aviso se rige por la legislación española. Para cualquier controversia, las partes se someterán a los juzgados y tribunales que correspondan conforme a la normativa vigente, siendo competentes, en el caso de consumidores, los de su domicilio.</p>
+""")
+
+legal_page("privacidad.html", "Política de privacidad",
+    "Política de privacidad de casalarena.com: qué datos tratamos, con qué finalidad y cómo ejercer tus derechos.",
+    "Política de privacidad", f"""
+    <h2>1. Responsable del tratamiento</h2>
+    <ul>
+      <li><strong>Responsable:</strong> {TIT}</li>
+      <li><strong>NIF/CIF:</strong> {NIF}</li>
+      <li><strong>Domicilio:</strong> {LEGAL["domicilio"]}</li>
+      <li><strong>Correo electrónico:</strong> {EMAIL}</li>
+    </ul>
+    <h2>2. Qué datos tratamos</h2>
+    <p>Esta web <strong>no tiene formularios de registro, reservas, newsletter ni zona de usuarios</strong>, y no recoge datos personales de forma automática con herramientas de analítica o publicidad. Solo tratamos datos personales si nos escribes por correo electrónico o a través de nuestras redes sociales: en ese caso, los datos que tú nos facilites (nombre, correo, contenido del mensaje).</p>
+    <h2>3. Finalidad y base jurídica</h2>
+    <p>Utilizamos esos datos únicamente para atender tu consulta o solicitud. La base jurídica es tu consentimiento al contactarnos y, en su caso, la aplicación de medidas precontractuales a petición tuya (art. 6.1.a y 6.1.b del Reglamento (UE) 2016/679, RGPD).</p>
+    <h2>4. Conservación y destinatarios</h2>
+    <p>Conservaremos los datos durante el tiempo necesario para resolver tu consulta y, después, durante los plazos legales de prescripción de posibles responsabilidades. No cedemos tus datos a terceros salvo obligación legal. Los proveedores que nos prestan servicios técnicos (alojamiento de la web en GitHub Pages, correo electrónico) pueden acceder a los datos en calidad de encargados del tratamiento.</p>
+    <h2>5. Servicios de terceros</h2>
+    <p>Si cargas el mapa de Google en la página de Contacto o sigues enlaces a Instagram, TikTok u otras webs, esos servicios tratarán datos según sus propias políticas: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google</a>, <a href="https://privacycenter.instagram.com/policy" target="_blank" rel="noopener">Instagram</a>, <a href="https://www.tiktok.com/legal/page/eea/privacy-policy/es" target="_blank" rel="noopener">TikTok</a>. Consulta también nuestra <a href="cookies.html">política de cookies</a>.</p>
+    <h2>6. Tus derechos</h2>
+    <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad escribiendo a {EMAIL}, indicando el derecho que quieres ejercer y adjuntando una copia de tu documento de identidad. Si consideras que tus derechos no han sido atendidos, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener">www.aepd.es</a>).</p>
+    <h2>7. Cambios en esta política</h2>
+    <p>Podemos actualizar esta política para adaptarla a cambios legales o de la web. La fecha de la última actualización figura al principio de esta página.</p>
+""")
+
+legal_page("cookies.html", "Política de cookies",
+    "Política de cookies de casalarena.com: esta web no usa cookies propias ni de analítica o publicidad.",
+    "Política de cookies", f"""
+    <h2>1. ¿Qué son las cookies?</h2>
+    <p>Las cookies son pequeños archivos que un sitio web guarda en tu dispositivo al visitarlo y que sirven, por ejemplo, para recordar preferencias o medir el uso de la web.</p>
+    <h2>2. Cookies que usa esta web</h2>
+    <p><strong>Esta web no instala cookies propias, ni de analítica, ni de publicidad o seguimiento.</strong> Las fuentes tipográficas están alojadas en la propia web y no se conectan con servicios externos. Por eso no mostramos un banner de cookies al entrar.</p>
+    <h2>3. Mapa de Google (solo si lo cargas)</h2>
+    <p>En la página de <a href="contacto.html">Contacto</a> el mapa interactivo <strong>no se carga hasta que pulsas «Cargar mapa»</strong>. Al hacerlo, se incorpora contenido de Google Maps, y Google puede instalar cookies o acceder a las que ya tengas, conforme a su <a href="https://policies.google.com/technologies/cookies" target="_blank" rel="noopener">política de cookies</a>. Si prefieres evitarlo, puedes usar el enlace «Abrir en Google Maps», que te lleva directamente a la aplicación de Google.</p>
+    <h2>4. Enlaces a redes sociales y otras webs</h2>
+    <p>Los enlaces a Instagram, TikTok, valenciabasket.com o roigarena.com te llevan a webs de terceros con sus propias políticas de cookies.</p>
+    <h2>5. Cómo gestionar o eliminar cookies</h2>
+    <p>Puedes bloquear o borrar las cookies desde la configuración de tu navegador: <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Chrome</a>, <a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a>, <a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Firefox</a>, <a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Edge</a>.</p>
+    <h2>6. Responsable y contacto</h2>
+    <p>Responsable: {TIT} · Correo: {EMAIL}. Más información en la <a href="privacidad.html">política de privacidad</a> y el <a href="aviso-legal.html">aviso legal</a>.</p>
+""")
