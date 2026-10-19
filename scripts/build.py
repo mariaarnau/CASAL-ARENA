@@ -22,6 +22,7 @@ NAV = [
 SITE = "https://casalarena.com"
 
 def head(title, desc, image="assets/img/fachada-noche.jpg", name="index.html", ld=""):
+    gsc = '\n<meta name="google-site-verification" content="EZ4q8E5K3PpbhhtYgEok6qdiB0hNmCmZPGFjtnd580Q" />' if name == "index.html" else ""
     url = SITE + "/" + ("" if name == "index.html" else name)
     img = image if image.startswith("http") else f"{SITE}/{image}"
     return f"""<!doctype html>
@@ -32,7 +33,7 @@ def head(title, desc, image="assets/img/fachada-noche.jpg", name="index.html", l
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#08170f">
-<link rel="canonical" href="{url}">
+<link rel="canonical" href="{url}">{gsc}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Casal Arena València">
 <meta property="og:locale" content="es_ES">
