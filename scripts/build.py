@@ -19,7 +19,11 @@ NAV = [
 ]
 
 
-def head(title, desc, image="assets/img/fachada-noche.jpg"):
+SITE = "https://casalarena.com"
+
+def head(title, desc, image="assets/img/fachada-noche.jpg", name="index.html", ld=""):
+    url = SITE + "/" + ("" if name == "index.html" else name)
+    img = image if image.startswith("http") else f"{SITE}/{image}"
     return f"""<!doctype html>
 <html lang="es">
 <head>
@@ -28,14 +32,20 @@ def head(title, desc, image="assets/img/fachada-noche.jpg"):
 <title>{title}</title>
 <meta name="description" content="{desc}">
 <meta name="theme-color" content="#08170f">
+<link rel="canonical" href="{url}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Casal Arena València">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="{url}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="{image}">
+<meta property="og:image" content="{img}">
+<meta name="twitter:card" content="summary_large_image">{ld}
 <link rel="icon" type="image/png" href="assets/img/logo-monograma.png">
 <link rel="preload" href="assets/fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/fonts.css?v=20261012b">
-<link rel="stylesheet" href="css/styles.css?v=20261012b">
+<link rel="stylesheet" href="css/fonts.css?v=20261019">
+<link rel="stylesheet" href="css/styles.css?v=20261019">
 </head>
 <body>
 """
@@ -117,8 +127,31 @@ def phero(img, eyebrow, title, pos="50% 50%", xl=False, sub=""):
 """
 
 
+
+import json as _json
+JSONLD = "\n<script type=\"application/ld+json\">" + _json.dumps({
+    "@context": "https://schema.org",
+    "@type": ["Restaurant", "CafeOrCoffeeShop"],
+    "name": "Casal Arena València",
+    "alternateName": "Casal Arena",
+    "url": SITE + "/",
+    "description": "Tasca y cafetería junto al Roig Arena de València: buen café, buen jamón, tapeo y cerveza de bodega, con los partidos del Valencia Basket en pantalla grande.",
+    "image": [SITE + "/assets/img/fachada-noche.jpg", SITE + "/assets/img/local-mural-panoramica.jpg"],
+    "logo": SITE + "/assets/img/logo-casal-arena.png",
+    "servesCuisine": ["Tapas", "Tasca", "Café"],
+    "priceRange": "10–20 €",
+    "address": {"@type": "PostalAddress", "streetAddress": "C. d'Antonio Ferrandis, 24", "addressLocality": "València", "postalCode": "46013", "addressRegion": "Comunitat Valenciana", "addressCountry": "ES"},
+    "hasMap": "https://maps.google.com/?cid=8560584092342350671",
+    "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Sunday"], "opens": "17:00", "closes": "23:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "17:00", "closes": "00:00"},
+    ],
+    "sameAs": ["https://www.instagram.com/casalarena_/", "https://www.tiktok.com/@casalarenavalencia"],
+}, ensure_ascii=False, indent=1) + "</script>"
+
 def page(name, title, desc, active, body, extra="", image="assets/img/fachada-noche.jpg"):
-    html = head(title, desc, image) + header(active) + "<main>\n" + body + "</main>\n" + footer() + extra + SCRIPTS
+    ld = JSONLD if name == "index.html" else ""
+    html = head(title, desc, image, name, ld) + header(active) + "<main>\n" + body + "</main>\n" + footer() + extra + SCRIPTS
     with open(os.path.join(ROOT, name), "w", encoding="utf-8") as f:
         f.write(html)
     print("OK", name)
@@ -653,3 +686,15 @@ legal_page("cookies.html", "Política de cookies",
     <h2>6. Responsable y contacto</h2>
     <p>Responsable: {TIT} · Correo: {EMAIL}. Más información en la <a href="privacidad.html">política de privacidad</a> y el <a href="aviso-legal.html">aviso legal</a>.</p>
 """)
+
+# ============================ SITEMAP Y ROBOTS ============================
+PAGES = ["index.html", "quienes-somos.html", "carta.html", "el-local.html", "valencia-basket.html",
+         "contacto.html", "aviso-legal.html", "privacidad.html", "cookies.html"]
+with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
+    for n in PAGES:
+        f.write(f"  <url><loc>{SITE}/{'' if n == 'index.html' else n}</loc></url>\n")
+    f.write("</urlset>\n")
+with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+    f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
+print("OK sitemap.xml robots.txt")
