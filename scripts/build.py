@@ -144,17 +144,22 @@ ticker_items = ["Tasca · Cafetería", "Buen café", "Buen jamón", "Tapeo", "Bu
 ticker = "".join(f'<span class="ticker__item">{t}</span>' for t in ticker_items)
 
 home = f"""<section class="hero">
-  <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg">
-    <source src="assets/video/hero.mp4" type="video/mp4">
-  </video>
+  <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__shade"></div>
   {COURT.format(cls="hero__court")}
   <div class="wrap hero__body">
-    <h1 class="display hero__title" aria-label="Casal Arena"><span><b>Casal</b></span><span><b>Arena</b></span></h1>
-    <p class="hero__tag">El rincón del buen sabor, junto al Roig Arena</p>
-    <div class="hero__cta">
-      <a class="btn btn--solid" href="carta.html">Ver la carta</a>
-      <a class="btn" href="valencia-basket.html">Próximos partidos</a>
+    <div class="hero__copy">
+      <h1 class="display hero__title" aria-label="Casal Arena"><span><b>Casal</b></span><span><b>Arena</b></span></h1>
+      <p class="hero__tag">El rincón del buen sabor, junto al Roig Arena</p>
+      <div class="hero__cta">
+        <a class="btn btn--solid" href="carta.html">Ver la carta</a>
+        <a class="btn" href="valencia-basket.html">Próximos partidos</a>
+      </div>
+    </div>
+    <div class="hero__phone">
+      <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-local-poster.jpg" aria-label="Recorrido por el local de Casal Arena">
+        <source src="assets/video/hero-local.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
   <div class="hero__bar">

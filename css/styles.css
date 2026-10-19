@@ -95,14 +95,21 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Portada ---------- */
 .hero { position: relative; height: min(84svh, 780px); min-height: 520px; overflow: hidden; background: var(--pine-950); color: var(--bone); }
-.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero__bg { position: absolute; inset: -60px; background: var(--pine-950) url("../assets/img/hero-local-poster.jpg") center / cover; filter: blur(46px) saturate(1.15); opacity: .5; }
+/* móvil: el vídeo vertical llena toda la portada */
+.hero__phone { position: absolute; inset: 0; z-index: 0; }
+.hero__shade, .hero__court { z-index: 1; }
+.hero__body { z-index: 2; }
+.hero__bg { display: none; }
 .hero__shade { position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(8, 23, 15, .38), rgba(8, 23, 15, .7)), linear-gradient(0deg, rgba(8, 23, 15, .7), transparent 40%); }
-.hero__body { position: relative; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 76px; }
+.hero__body { position: static; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding-bottom: 76px; }
+.hero__copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
 .hero__title { font-size: clamp(2.8rem, 6.4vw, 5.2rem); letter-spacing: .02em; display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .28em; margin: 0 0 14px; font-weight: 400; animation: fadeup 1.2s var(--ease) both; }
 .hero__title span, .hero__title b { display: inline; font-weight: 400; }
 .hero__tag { font-family: var(--f-serif); font-style: italic; font-size: clamp(1.15rem, 1.8vw, 1.5rem); margin: 0 0 30px; line-height: 1.3; opacity: .92; animation: fadeup 1.2s .25s var(--ease) both; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; animation: fadeup 1.2s .45s var(--ease) both; }
-.hero__bar { position: absolute; inset: auto 0 0 0; border-top: 1px solid var(--line-lt); background: rgba(8, 23, 15, .55); backdrop-filter: blur(8px); }
+.hero__bar { z-index: 3; position: absolute; inset: auto 0 0 0; border-top: 1px solid var(--line-lt); background: rgba(8, 23, 15, .55); backdrop-filter: blur(8px); }
 .hero__bar-in { display: grid; grid-template-columns: repeat(3, 1fr); }
 .hero__bar-in > * { padding: 16px 20px; border-left: 1px solid var(--line-lt); text-decoration: none; display: flex; flex-direction: column; gap: 2px; text-align: left; }
 .hero__bar-in > *:first-child { border-left: 0; padding-left: 0; }
@@ -350,6 +357,22 @@ body.is-locked { overflow: hidden; }
   .viewer__bar { display: none; }
   .viewer__scroll { overflow: visible; padding: 0; }
   .viewer__scroll img, .sheet { box-shadow: none; page-break-after: always; }
+}
+
+/* ordenador y tablet: texto a la izquierda y vídeo vertical enmarcado a la derecha */
+@media (max-width: 700px) {
+  .hero__body { justify-content: flex-start; padding-top: clamp(36px, 8svh, 72px); }
+  .hero__shade { background: linear-gradient(180deg, rgba(8, 23, 15, .8), rgba(8, 23, 15, .35) 48%, rgba(8, 23, 15, .15) 70%), linear-gradient(0deg, rgba(8, 23, 15, .7), transparent 40%); }
+}
+@media (min-width: 701px) {
+  .hero__bg { display: block; }
+  .hero__shade { background: linear-gradient(90deg, rgba(8, 23, 15, .78), rgba(8, 23, 15, .35) 60%, rgba(8, 23, 15, .55)), linear-gradient(0deg, rgba(8, 23, 15, .6), transparent 40%); }
+  .hero__body { position: relative; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; gap: clamp(24px, 5vw, 80px); text-align: left; padding-bottom: 96px; }
+  .hero__copy { align-items: flex-start; }
+  .hero__title { font-size: clamp(3.2rem, 5.6vw, 5.8rem); }
+  .hero__title { justify-content: flex-start; }
+  .hero__cta { justify-content: flex-start; }
+  .hero__phone { position: relative; inset: auto; z-index: 2; justify-self: end; height: min(100%, 620px); max-height: 100%; aspect-ratio: 9 / 16; border-radius: 26px; overflow: hidden; border: 1px solid rgba(229, 200, 119, .55); box-shadow: 0 0 0 6px rgba(8, 23, 15, .55), 0 0 0 7px rgba(229, 200, 119, .28), 0 30px 70px rgba(0, 0, 0, .5); }
 }
 
 /* ---------- Responsive ---------- */
