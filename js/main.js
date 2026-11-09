@@ -313,7 +313,7 @@
       setTimeout(function () {
         if (document.body.classList.contains("is-locked")) return; // otro diálogo abierto
         rm._last = document.activeElement; rm.hidden = false; document.body.classList.add("is-locked"); $("#rClose").focus();
-      }, 2000);
+      }, 1000);
     }
     $("#rClose").addEventListener("click", closeR);
     $("#rSkip").addEventListener("click", closeR);
