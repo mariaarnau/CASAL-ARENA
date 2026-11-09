@@ -173,6 +173,22 @@ REVIEWS = f"""<section class="sec darker reviews">
 
 """
 
+IGICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg>'
+RESERVA = """<section class="reserva" id="reservas">
+  <div class="wrap">
+    <div class="reserva__box">
+      <div class="reserva__txt">
+        <p class="reserva__eyebrow">Reservas</p>
+        <h2 class="display reserva__title">Reserva tu mesa</h2>
+        <p class="reserva__p">Escríbenos por Instagram y te guardamos sitio.</p>
+      </div>
+      <a class="reserva__btn" data-insta target="_blank" rel="noopener" href="#">""" + IGICON + """<span>Reservar por Instagram</span></a>
+    </div>
+  </div>
+</section>
+
+"""
+
 # ============================ INICIO ============================
 ticker_items = ["Tasca · Cafetería", "Buen café", "Buen jamón", "Tapeo", "Buena cerveza de bodega", "Junto al Roig Arena", "València"]
 ticker = "".join(f'<span class="ticker__item">{t}</span>' for t in ticker_items)
@@ -204,7 +220,7 @@ home = f"""<section class="hero">
   </div>
 </section>
 
-<section class="sec">
+""" + RESERVA + f"""<section class="sec">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
@@ -489,6 +505,7 @@ page("el-local.html", "El local · Casal Arena València",
      "el-local.html", local, extra=lightbox, image="assets/img/local-pared-casal-arena.jpg")
 
 # ============================ VALENCIA BASKET ============================
+basket_reserva = RESERVA
 basket = phero("assets/img/tele-partido.jpg", "Valencia Basket y eventos del Roig Arena", "Vive el <em>partido</em>", "50% 35%", xl=True, sub="Liga Endesa en pantalla grande") + f"""
 <section class="sec">
   <div class="wrap">
@@ -542,6 +559,7 @@ basket = phero("assets/img/tele-partido.jpg", "Valencia Basket y eventos del Roi
   </div>
 </section>
 """
+basket = basket.replace('<section class="sec">', RESERVA + '<section class="sec">', 1)
 page("valencia-basket.html", "Valencia Basket · Casal Arena València",
      "Ve los partidos del Valencia Basket en pantalla grande en Casal Arena, a un paso del Roig Arena. Próximos partidos de la Liga Endesa.",
      "valencia-basket.html", basket, image="assets/img/tele-partido.jpg")
@@ -583,6 +601,7 @@ contacto = phero("assets/img/fachada-noche.jpg", "Te esperamos en casa", "Contac
   </div>
 </section>
 """
+contacto = contacto.replace('<section class="sec">', RESERVA + '<section class="sec">', 1)
 contacto += REVIEWS
 page("contacto.html", "Contacto · Casal Arena València",
      "Dónde estamos, horario y redes sociales de Casal Arena, tasca y cafetería junto al Roig Arena en València.",
