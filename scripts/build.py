@@ -189,6 +189,18 @@ RESERVA = """<section class="reserva" id="reservas">
 
 """
 
+RESERVA_MODAL = """<div class="rmodal" id="rModal" role="dialog" aria-modal="true" aria-labelledby="rTitle" hidden>
+  <div class="rmodal__card">
+    <button class="rmodal__x" id="rClose" type="button" aria-label="Cerrar">&times;</button>
+    <p class="reserva__eyebrow">Reservas</p>
+    <h2 class="display rmodal__title" id="rTitle">Reserva tu mesa</h2>
+    <p class="reserva__p">Escríbenos por Instagram y te guardamos sitio.</p>
+    <a class="reserva__btn" data-insta target="_blank" rel="noopener" href="#">""" + IGICON + """<span>Reservar por Instagram</span></a>
+    <button class="rmodal__skip" id="rSkip" type="button">Ahora no</button>
+  </div>
+</div>
+"""
+
 # ============================ INICIO ============================
 ticker_items = ["Tasca · Cafetería", "Buen café", "Buen jamón", "Tapeo", "Buena cerveza de bodega", "Junto al Roig Arena", "València"]
 ticker = "".join(f'<span class="ticker__item">{t}</span>' for t in ticker_items)
@@ -281,7 +293,7 @@ home = f"""<section class="hero">
 home += REVIEWS
 page("index.html", "Casal Arena València · Tasca y cafetería junto al Roig Arena",
      "Casal Arena: tasca familiar temática de baloncesto junto al Roig Arena, en València. Carta, horario y los partidos del Valencia Basket en pantalla grande.",
-     "", home)
+     "", home, extra=RESERVA_MODAL)
 
 # ============================ QUIÉNES SOMOS ============================
 about = phero("assets/img/local-mural-panoramica.jpg", "Nuestra historia", "Quiénes somos", "50% 40%") + f"""

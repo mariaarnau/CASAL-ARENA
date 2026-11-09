@@ -138,7 +138,8 @@
       var d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60);
       cnt.innerHTML = [[d, "días"], [h, "horas"], [m, "min"]].map(function (x) { return "<div><b>" + x[0] + "</b><small>" + x[1] + "</small></div>"; }).join("");
       setTimeout(tick, 30000);
-    })();
+    
+})();
   } else if (board) { board.hidden = true; }
 
   var fxBox = $("#fixtures");
@@ -297,4 +298,28 @@
     if (e.key !== "Escape") return;
     if (lb && !lb.hidden) closeLb(); else if (viewer && !viewer.hidden) closeViewer();
   });
+
+  /* ---------- Aviso de reservas (una vez por visita) ---------- */
+  var rm = $("#rModal");
+  if (rm) {
+    var seen = false;
+    try { seen = sessionStorage.getItem("rModalSeen") === "1"; } catch (e) {}
+    var closeR = function () {
+      rm.hidden = true; document.body.classList.remove("is-locked");
+      try { sessionStorage.setItem("rModalSeen", "1"); } catch (e) {}
+      if (rm._last) rm._last.focus();
+    };
+    if (!seen) {
+      setTimeout(function () {
+        if (document.body.classList.contains("is-locked")) return; // otro diálogo abierto
+        rm._last = document.activeElement; rm.hidden = false; document.body.classList.add("is-locked"); $("#rClose").focus();
+      }, 2000);
+    }
+    $("#rClose").addEventListener("click", closeR);
+    $("#rSkip").addEventListener("click", closeR);
+    rm.addEventListener("click", function (e) { if (e.target === rm) closeR(); });
+    rm.querySelector("a").addEventListener("click", function () { try { sessionStorage.setItem("rModalSeen", "1"); } catch (e) {} });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !rm.hidden) closeR(); });
+  }
+
 })();
