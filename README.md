@@ -15,3 +15,8 @@ Páginas: `index.html`, `quienes-somos.html`, `carta.html`, `el-local.html`, `va
 - `assets/` – imágenes, vídeo y fuentes (Instrument Serif, Manrope y EB Garamond para la carta, alojadas en el propio sitio).
 - `originales/` – material original sin tocar.
 - Logo: `logo-casal-arena.png` (dorado, fondos oscuros) y `logo-casal-arena-oscuro.png` (fondos claros). Transparentes.
+
+## Publicación
+La web se publica con GitHub Pages desde la rama `claude/inspiring-einstein-ezq7tr` en https://casalarena.com.
+Si un cambio no aparece: pestaña Actions → "pages build and deployment" → comprobar que el último está en verde
+(si falló, "Re-run all jobs"). Después, recarga forzada o ventana privada.
