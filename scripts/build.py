@@ -65,6 +65,7 @@ def header(active):
     </a>
     <nav class="nav" id="nav" aria-label="Principal">
 {links}
+      <a class="nav__reserva" data-insta target="_blank" rel="noopener" href="#">Reservas</a>
       <a class="btn btn--solid" data-directions href="#">Cómo llegar</a>
     </nav>
     <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>

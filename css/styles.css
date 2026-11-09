@@ -535,3 +535,9 @@ body.is-locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .rmodal, .rmodal__card { animation: none; } }
 .reserva__btn { white-space: nowrap; }
 .rmodal .reserva__btn { padding: 16px 18px; letter-spacing: .1em; justify-content: center; width: 100%; }
+
+/* ---------- "Reservas" fijo en el menú ---------- */
+.nav a.nav__reserva { padding: 10px 22px; background: var(--orange); color: #fff; border: 1px solid var(--orange); font-size: max(.78rem, 12px); font-weight: 700; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; transition: background .3s, border-color .3s, transform .3s; }
+.nav a.nav__reserva::after { display: none; }
+.nav a.nav__reserva:hover { background: var(--orange-deep); border-color: var(--orange-deep); color: #fff; transform: translateY(-1px); }
+@media (max-width: 1080px) { .nav a.nav__reserva { font-size: 1rem; padding: 14px 40px; } }
