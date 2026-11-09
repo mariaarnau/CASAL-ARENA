@@ -232,7 +232,7 @@ home = f"""<section class="hero">
   </div>
 </section>
 
-""" + RESERVA + f"""<section class="sec">
+""" + f"""<section class="sec">
   <div class="wrap">
     <div class="sec-head reveal">
       <div>
